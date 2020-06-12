@@ -100,8 +100,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	wrapper Start
 --*/
 #intro {
-  padding: 100px 0;
-  /* color: #494949; */
+  padding: 100px;
   background-color: #494949
 }
 #intro .block h2 {
@@ -284,32 +283,12 @@ font header .navbar-default .navbar-nav li a:hover {
 footer {
   background: #2e2e2e;
   text-align: center;
-  padding-top: 48px;
-  padding-bottom: 55px;
-}
-footer p {
+  padding-top: 24px;
+  padding-bottom: 24px;
   font-size: 13px;
   line-height: 25px;
   color: #919191;
-}
-footer a {
-  color: #595959;
-}
-footer .footer-manu {
-  padding-bottom: 25px;
-}
-footer .footer-manu ul {
-  margin: 0px;
-  padding: 0px;
-}
-footer .footer-manu ul li {
-  display: inline-block;
-  padding: 0px 20px;
-}
-footer .footer-manu ul li a {
-  display: inline-block;
-  color: #494949;
-}
-footer .footer-manu ul li a:hover {
-  color: #000;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
