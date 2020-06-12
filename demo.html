@@ -1,0 +1,79 @@
+---
+layout: page
+title: Demo
+permalink: /demo/
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <p>
+        <span>Creatine: </span>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_creatine">
+        </div>
+        <span>Amount (mg):</span>
+        <span id="creatine" style="font-weight:bold;color:red"></span>
+        <span>mg</span>
+      </p>
+      <br>
+      <p>
+        <span>Caffeine: </span>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine">
+        </div>
+        <span>Amount (g):</span> <span id="caffeine" style="font-weight:bold;color:red"></span>
+      </p>
+      <br>
+      <p>
+        <span>L-Arganine: </span>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="2" value="0" step = "0.01" class="slider" id="slide_larganine">
+        </div>
+        <span>Amount (g):</span> <span id="larganine" style="font-weight:bold;color:red"></span>
+      </p>
+      <br>
+      <p>
+        <span>Beta Alanine: </span>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="4" value="0" step = "0.01" class="slider" id="slide_betaalanine">
+        </div>
+        <span>Amount (g):</span> <span id="betaalanine" style="font-weight:bold;color:red"></span>
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<!-- SCRIPTS -->
+<script>
+var slide_01 = document.getElementById("slide_creatine");
+var slide_02 = document.getElementById("slide_caffeine");
+var slide_03 = document.getElementById("slide_larganine");
+var slide_04 = document.getElementById("slide_betaalanine");
+
+var creatine = document.getElementById("creatine");
+var caffeine = document.getElementById("caffeine");
+var larganine = document.getElementById("larganine");
+var betaalanine = document.getElementById("betaalanine");
+
+creatine.innerHTML = slide_01.value;
+caffeine.innerHTML = slide_02.value;
+larganine.innerHTML = slide_03.value;
+betaalanine.innerHTML = slide_04.value;
+
+slide_01.oninput = function() {
+  creatine.innerHTML = this.value;
+}
+slide_02.oninput = function() {
+  caffeine.innerHTML = this.value;
+}
+slide_03.oninput = function() {
+  larganine.innerHTML = this.value;
+}
+slide_04.oninput = function() {
+  betaalanine.innerHTML = this.value;
+}
+</script>
