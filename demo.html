@@ -3,9 +3,7 @@ layout: page
 title: Demo
 permalink: /demo/
 ---
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 
 #myInput {
@@ -21,7 +19,7 @@ permalink: /demo/
 #myInput:focus {outline: 3px solid #ddd;}
 
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #cc4125ff;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -29,7 +27,7 @@ permalink: /demo/
   cursor: pointer;
 }
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
+  background-color: #aa4125ff;
 }
 
 .dropdown {
@@ -67,80 +65,131 @@ permalink: /demo/
 .supplements { grid-area: supplements; }
 .dropdown { grid-area: dropdown; }
 
-
 </style>
-</head>
-<body>
 
-<h2>Search/Filter Dropdown</h2>
-<p>Click on the button to open the dropdown menu, and use the input field to search for a specific dropdown link.</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <div id="room_fileds"></div>
+    </div>
 
-<div class="grid-container">
-  <div class="header"></div>
-  <div class="footer"></div>
-  <div class="nutrition_label"></div>
-
-  <div class="supplements">
-    <div id="room_fileds">
-      <!-- <div class='label'>Room 1:</div>
-      <div class="content">
-        <input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine">
-      </div> -->
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Add Supplement</button>
+      <div id="myDropdown" class="dropdown-content">
+        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
+        <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
+        <a onclick="add_fields('Creatine','creatine')">Creatine</a>
+        <a onclick="add_fields('L-Arganine','larganine')">L-Arganine</a>
+      </div>
     </div>
   </div>
-
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-    <div id="myDropdown" class="dropdown-content">
-      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a onclick="add_fields('Beta Alanine')">Beta Alanine</a>
-      <a onclick="add_fields('Caffeine')">Caffeine</a>
-      <a onclick="add_fields('Creatine')">Creatine</a>
-      <a onclick="add_fields('L-Arganine')" >L-Arganine</a>
-    </div>
-  </div>
-
 </div>
+</section>
 
-
-
+<!-- SCRIPTS -->
 <script>
-/* *********************************
-            JAVASCRIPT
-********************************* */
-var room = 0;
+  /* *********************************
+              JAVASCRIPT
+  ********************************* */
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+  var index=0;
 
-function add_fields(value) {
-    room++;
-    var objTo = document.getElementById('room_fileds')
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  function add_fields(name,val) {
+
+    index ++;
+    slide_index = "slide_";
+    slide_index = slide_index.concat(toString(val));
+
+    var objTo = document.getElementById('room_fileds');
     var divtest = document.createElement("div");
-    divtest.innerHTML = '<div class="label">'+value+'</div><div class="content"><input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine"></div>';
-
+    divtest.innerHTML = '                                                      \
+      <div class="label">'+name+':</div>                                       \
+      <div class="content">                                                    \
+        <input type="range"                                                    \
+         min="0"                                                               \
+         max="300"                                                             \
+         width=50%                                                             \
+         value="0"                                                             \
+         class="slider"                                                        \
+         id=slide_index>                                                       \
+      </div>                                                                   \
+      <span>Amount (mg):</span>                                                \
+      <span id=val style="font-weight:bold;color:red"></span>                  \
+      <span>mg</span>                                                          \
+      <div></div>';
     objTo.appendChild(divtest)
-}
 
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
+    var slide_val = document.getElementById(slide_index);
+    var supplement = document.getElementById(val);
+    supplement.innerHTML = slide_val.value;
+    slide_val.oninput = function() {
+      supplement.innerHTML = this.value;
     }
   }
-}
-</script>
 
-</body>
-</html>
+
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+<!-- <script>
+var slide_creatine = document.getElementById("slide_creatine");
+var slide_caffeine = document.getElementById("slide_caffeine");
+var slide_larganine = document.getElementById("slide_larganine");
+var slide_betaalanine = document.getElementById("slide_betaalanine");
+
+var creatine = document.getElementById("creatine");
+var caffeine = document.getElementById("caffeine");
+var larganine = document.getElementById("larganine");
+var betaalanine = document.getElementById("betaalanine");
+
+creatine.innerHTML = slide_creatine.value;
+caffeine.innerHTML = slide_caffeine.value;
+larganine.innerHTML = slide_larganine.value;
+betaalanine.innerHTML = slide_betaalanine.value;
+
+slide_creatine.oninput = function() {
+  creatine.innerHTML = this.value;
+}
+slide_caffeine.oninput = function() {
+  caffeine.innerHTML = this.value;
+}
+slide_larganine.oninput = function() {
+  larganine.innerHTML = this.value;
+}
+slide_betaalanine.oninput = function() {
+  betaalanine.innerHTML = this.value;
+}
+</script> -->
