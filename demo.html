@@ -70,6 +70,15 @@ permalink: /demo/
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-6">
+      <p>
+        <span>Creatine: </span>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_creatine">
+        </div>
+        <span>Amount (mg):</span>
+        <span id="creatine" style="font-weight:bold;color:red"></span>
+        <span>mg</span>
+      </p>
       <div id="room_fileds"></div>
     </div>
 
@@ -162,6 +171,18 @@ permalink: /demo/
         }
       }
     }
+  }
+
+  var slide_01 = document.getElementById("slide_creatine");
+
+
+  var creatine = document.getElementById("creatine");
+
+
+  creatine.innerHTML = slide_01.value;
+
+  slide_01.oninput = function() {
+    creatine.innerHTML = this.value;
   }
 </script>
 <!-- <script>
