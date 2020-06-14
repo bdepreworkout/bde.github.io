@@ -3,17 +3,23 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="footer-menu">
+        <!-- <div class="footer-menu">
           <ul>
-            <!-- <li><a href="#">About Us</a></li> -->
+            <li><a href="#">About Us</a></li> -->
             <!-- <li><a href="{{ site.baseurl }}/contact">Contact us</a></li> -->
             <!-- <li><a href="#">How it works</a></li> -->
             <!-- <li><a href="{{ site.baseurl }}/blog">Blog</a></li> -->
-            <!-- <li><a href="#">Terms</a></li> -->
+            <!-- <li><a href="#">Terms</a></li>
           </ul>
-        </div>
-        <p>Copyright &copy; Design &amp; Developed by <a href="http://www.bdepreworkout.com">BDE Preworkout</a>. All rights reserved.</p>
+        </div> -->
+        <!-- <p>&copy;  Copyright 2020 Design &amp; Developed by <a href="http://www.bdepreworkout.com">BDE Preworkout</a>. All rights reserved.</p> -->
+            &copy; Copyright {{ site.time | date: '%Y' }} {{ site.name }}.
+                {% if site.last_updated %}
+                    Last updated: {{ site.last_updated }}.
+                {% endif %}
+
       </div>
     </div>
   </div>
 </footer>
+S

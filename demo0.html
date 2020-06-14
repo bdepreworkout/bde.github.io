@@ -1,8 +1,4 @@
----
-layout: page
-title: Demo
-permalink: /demo/
----
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +116,8 @@ function add_fields(value) {
     room++;
     var objTo = document.getElementById('room_fileds')
     var divtest = document.createElement("div");
-    divtest.innerHTML = '<div class="label">'+value+'</div><div class="content"><input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine"></div>';
+    divtest.innerHTML = '<div class="label">'+value+'</div> \
+    <div class="content"><input type="range" min="0" max="300" width=50% value="0" class="slider" id="slide_caffeine"></div>';
 
     objTo.appendChild(divtest)
 }
