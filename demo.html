@@ -5,96 +5,163 @@ permalink: /demo/
 ---
 
 <style>
+  #myInput {
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  #myInput:focus {
+    outline: 3px solid #ddd;
+  }
+  .dropbtn {
+    background-color: #cc4125ff;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .dropbtn:hover,
+  .dropbtn:focus {
+    background-color: #aa4125ff;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown a:hover {
+    background-color: #ddd;
+  }
+  .show {
+    display: block;
+  }
 
-#myInput {
-  box-sizing: border-box;
-  background-image: url('searchicon.png');
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-#myInput:focus {outline: 3px solid #ddd;}
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1.5fr;
+    grid-template-rows: 0.5fr 0.5fr 2.5fr 0.5fr;
+    gap: 1px 1px;
+    grid-template-areas: "header header header""nutrition_label dropdown supplements""nutrition_label . supplements""footer footer footer";
+  }
+  .header {
+    grid-area: header;
+  }
+  .footer {
+    grid-area: footer;
+  }
+  .nutrition_label {
+    grid-area: nutrition_label;
+  }
+  .supplements {
+    grid-area: supplements;
+  }
+  .dropdown {
+    grid-area: dropdown;
+  }
 
-.dropbtn {
-  background-color: #cc4125ff;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #aa4125ff;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown a:hover {background-color: #ddd;}
-.show {display: block;}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 0.5fr 1.5fr;
-  grid-template-rows: 0.5fr 0.5fr 2.5fr 0.5fr;
-  gap: 1px 1px;
-  grid-template-areas: "header header header" "nutrition_label dropdown supplements" "nutrition_label . supplements" "footer footer footer";
-}
-.header { grid-area: header; }
-.footer { grid-area: footer; }
-.nutrition_label { grid-area: nutrition_label; }
-.supplements { grid-area: supplements; }
-.dropdown { grid-area: dropdown; }
-
+  .slidecontainer {
+    width: 50%;
+  }
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  .slider:hover {
+    opacity: 1;
+  }
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+  }
 </style>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-6">
-      <p>
-        <span>Creatine: </span>
-        <div class="slidecontainer">
-          <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_creatine">
-        </div>
-        <span>Amount (mg):</span>
-        <span id="creatine" style="font-weight:bold;color:red"></span>
-        <span>mg</span>
-      </p>
-      <div id="room_fileds"></div>
-    </div>
-
-    <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn">Add Supplement</button>
-      <div id="myDropdown" class="dropdown-content">
-        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-        <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
-        <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
-        <a onclick="add_fields('Creatine','creatine')">Creatine</a>
-        <a onclick="add_fields('L-Arganine','larganine')">L-Arganine</a>
-      </div>
+<div class="grid-container">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Add Supplement</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+      <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
+      <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
+      <a onclick="add_fields('Creatine','creatine')">Creatine</a>
+      <a onclick="add_fields('L-Citrulline','lcitrulline')">L-Citrulline</a>
     </div>
   </div>
+  <div class="supplements">
+    <h4>
+      <span>Creatine: </span>
+      <p></p>
+      <p></p>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="25" value="0" step="0.1" class="slider" id="slide_creatine">
+      </div>
+      <p></p>
+      <span>Amount (g):</span>
+      <span id="creatine" style="font-weight:bold;color:red"></span>
+    </h4>
+    <h1></h1>
+    <h4>
+      <span>Caffeine: </span>
+      <p></p>
+      <p></p>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine">
+      </div>
+      <p></p>
+      <span>Amount (mg):</span> <span id="caffeine" style="font-weight:bold;color:red"></span>
+    </h4>
+    <h1></h1>
+    <h4>
+      <span>L-Citrulline: </span>
+      <p></p>
+      <p></p>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_lcitrulline">
+      </div>
+      <p></p>
+      <span>Amount (g):</span> <span id="lcitrulline" style="font-weight:bold;color:red"></span>
+    </h4>
+    <h1></h1>
+    <h4>
+      <span>Beta Alanine: </span>
+      <p></p>
+      <p></p>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="4" value="0" step="0.1" class="slider" id="slide_betaalanine">
+      </div>
+      <p></p>
+      <span>Amount (g):</span> <span id="betaalanine" style="font-weight:bold;color:red"></span>
+    </h4>
+    <div id="room_fileds"></div>
+  </div>
 </div>
-</section>
 
 <!-- SCRIPTS -->
 <script>
@@ -102,7 +169,7 @@ permalink: /demo/
               JAVASCRIPT
   ********************************* */
 
-  var index=0;
+  var index = 0;
 
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
@@ -110,39 +177,55 @@ permalink: /demo/
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
-  function add_fields(name,val) {
+  function add_fields(name, val) {
 
-    index ++;
-    slide_index = "slide_";
-    slide_index = slide_index.concat(toString(val));
-
+    // if (val=="creatine"){
+    var slide_id = "slide_creatine";
     var objTo = document.getElementById('room_fileds');
-    var divtest = document.createElement("div");
-    divtest.innerHTML = '                                                      \
-      <div class="label">'+name+':</div>                                       \
-      <div class="content">                                                    \
-        <input type="range"                                                    \
-         min="0"                                                               \
-         max="300"                                                             \
-         width=50%                                                             \
-         value="0"                                                             \
-         class="slider"                                                        \
-         id=slide_index>                                                       \
-      </div>                                                                   \
-      <span>Amount (mg):</span>                                                \
-      <span id=val style="font-weight:bold;color:red"></span>                  \
-      <span>mg</span>                                                          \
-      <div></div>';
-    objTo.appendChild(divtest)
-
-    var slide_val = document.getElementById(slide_index);
-    var supplement = document.getElementById(val);
-    supplement.innerHTML = slide_val.value;
-    slide_val.oninput = function() {
-      supplement.innerHTML = this.value;
-    }
+    var slidetest = document.createElement("div");
+    slidetest.innerHTML = '                                                  \
+        <div class="label">' + name + ':</div>                                     \
+        <div class="slidecontainer">                                           \
+          <input type="range"                                                  \
+           min="0"                                                             \
+           max="300"                                                           \
+           width=50%                                                           \
+           value="0"                                                           \
+           class="slider"                                                      \
+           id=slide_id>                                                \
+        <span>Amount:</span>                                                   \
+        <span id=val style="font-weight:bold;color:red"></span>         \
+        <span>mg</span>                                                        \
+        </div>                                                                 \
+        <div id="room_fileds"></div>';
+    objTo.appendChild(slidetest)
+    // }
   }
 
+  var slide_caffeine = document.getElementById("slide_caffeine");
+  var caffeine = document.getElementById("caffeine");
+  caffeine.innerHTML = slide_caffeine.value;
+  slide_caffeine.oninput = function() {
+    caffeine.innerHTML = this.value;
+  }
+  var slide_creatine = document.getElementById("slide_creatine");
+  var creatine = document.getElementById("creatine");
+  creatine.innerHTML = slide_creatine.value;
+  slide_creatine.oninput = function() {
+    creatine.innerHTML = this.value;
+  }
+  var slide_betaalanine = document.getElementById("slide_betaalanine");
+  var betaalanine = document.getElementById("betaalanine");
+  betaalanine.innerHTML = slide_betaalanine.value;
+  slide_betaalanine.oninput = function() {
+    betaalanine.innerHTML = this.value;
+  }
+  var slide_lcitrulline = document.getElementById("slide_lcitrulline");
+  var lcitrulline = document.getElementById("lcitrulline");
+  lcitrulline.innerHTML = slide_lcitrulline.value;
+  slide_lcitrulline.oninput = function() {
+    lcitrulline.innerHTML = this.value;
+  }
 
   function filterFunction() {
     var input, filter, ul, li, a, i;
@@ -159,7 +242,6 @@ permalink: /demo/
       }
     }
   }
-
   window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -173,44 +255,4 @@ permalink: /demo/
     }
   }
 
-  var slide_01 = document.getElementById("slide_creatine");
-
-
-  var creatine = document.getElementById("creatine");
-
-
-  creatine.innerHTML = slide_01.value;
-
-  slide_01.oninput = function() {
-    creatine.innerHTML = this.value;
-  }
 </script>
-<!-- <script>
-var slide_creatine = document.getElementById("slide_creatine");
-var slide_caffeine = document.getElementById("slide_caffeine");
-var slide_larganine = document.getElementById("slide_larganine");
-var slide_betaalanine = document.getElementById("slide_betaalanine");
-
-var creatine = document.getElementById("creatine");
-var caffeine = document.getElementById("caffeine");
-var larganine = document.getElementById("larganine");
-var betaalanine = document.getElementById("betaalanine");
-
-creatine.innerHTML = slide_creatine.value;
-caffeine.innerHTML = slide_caffeine.value;
-larganine.innerHTML = slide_larganine.value;
-betaalanine.innerHTML = slide_betaalanine.value;
-
-slide_creatine.oninput = function() {
-  creatine.innerHTML = this.value;
-}
-slide_caffeine.oninput = function() {
-  caffeine.innerHTML = this.value;
-}
-slide_larganine.oninput = function() {
-  larganine.innerHTML = this.value;
-}
-slide_betaalanine.oninput = function() {
-  betaalanine.innerHTML = this.value;
-}
-</script> -->
