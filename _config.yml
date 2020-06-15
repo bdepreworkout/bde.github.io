@@ -12,16 +12,15 @@ keep_files:
   - ".git"
   - ".gitignore"
 
-
 # Site settings
 name: BDE Preworkout
-subtitle: ""
+email: info@bdepreworkout.com
 url: "bdepreworkout.com" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: ""
 cover: "/assets/cover.png"
 logo: "/assets/logo.png"
 last_updated: Jun, 2020
+
 # Build settings
 markdown: kramdown
 

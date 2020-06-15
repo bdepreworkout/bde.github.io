@@ -59,9 +59,9 @@ permalink: /demo/
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 0.5fr 1.5fr;
-    grid-template-rows: 0.5fr 0.5fr 2.5fr 0.5fr;
+    grid-template-rows: 0.5fr 2.5fr 0.5fr;
     gap: 1px 1px;
-    grid-template-areas: "header header header""nutrition_label dropdown supplements""nutrition_label . supplements""footer footer footer";
+    grid-template-areas: "nutrition_label dropdown supplements""nutrition_label . supplements""footer footer footer";
   }
   .header {
     grid-area: header;
@@ -101,6 +101,117 @@ permalink: /demo/
     height: 25px;
     border-radius: 100%;
   }
+
+  .nutrition-facts {
+    border: 1px solid black;
+    margin: 20px;
+    float: left;
+    width: 75%;
+    padding: 0.5rem;
+    table {
+      border-collapse: collapse;
+    }
+  }
+  .nutrition-facts p {
+    font-size: 10px;
+    margin: 1px 0 1px 0;
+  }
+  .nutrition-facts h6 {
+    /* font-size: 10px; */
+    margin: 1px 0 1px 0;
+  }
+  .nutrition-facts__title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0 0 0.25rem 0;
+  }
+  .nutrition-facts__header {
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+    p {
+      margin: 0;
+    }
+  }
+  .nutrition-facts__table {
+    width: 100%;
+    thead tr {
+      th,
+      td {
+        border: 0;
+      }
+    }
+    th,
+    td {
+      font-weight: normal;
+      text-align: left;
+      padding: 0.25rem 0;
+      border-top: 1px solid black;
+      white-space: nowrap;
+    }
+    td {
+      &:last-child {
+        text-align: right;
+      }
+    }
+    .blank-cell {
+      width: 1rem;
+      border-top: 0;
+    }
+    .thick-row {
+      th,
+      td {
+        border-top-width: 5px;
+      }
+    }
+  }
+  .nutrition-facts__table--small {
+    @extend .nutrition-facts__table;
+    border-bottom: 1px solid #999;
+    margin: 0 0 0.5rem 0;
+    thead {
+      tr {
+        border-bottom: 1px solid black;
+      }
+    }
+    td {
+      &:last-child {
+        text-align: left;
+      }
+    }
+    th,
+    td {
+      border: 0;
+      padding: 0;
+    }
+  }
+  .nutrition-facts__table--grid {
+    @extend .nutrition-facts__table;
+    margin: 0 0 0.5rem 0;
+    td {
+      &:last-child {
+        text-align: left;
+        &::before {
+          content: "•";
+          font-weight: bold;
+          margin: 0 0.25rem 0 0;
+        }
+      }
+    }
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .thick-end {
+    border-bottom: 10px solid black;
+  }
+  .thin-end {
+    border-bottom: 1px solid black;
+  }
+
 </style>
 
 <div class="grid-container">
@@ -115,54 +226,192 @@ permalink: /demo/
     </div>
   </div>
   <div class="supplements">
-    <h4>
-      <span>Creatine: </span>
-      <p></p>
-      <p></p>
+    <h4><span>Creatine: </span><p></p><p></p>
       <div class="slidecontainer">
         <input type="range" min="0" max="25" value="0" step="0.1" class="slider" id="slide_creatine">
-      </div>
-      <p></p>
+      </div><p></p>
       <span>Amount (g):</span>
-      <span id="creatine" style="font-weight:bold;color:red"></span>
-    </h4>
-    <h1></h1>
-    <h4>
-      <span>Caffeine: </span>
-      <p></p>
-      <p></p>
+      <span id="creatine" style="font-weight:bold;color:red"></span></h4><h1></h1>
+    <h4><span>Caffeine: </span><p></p><p></p>
       <div class="slidecontainer">
         <input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine">
-      </div>
-      <p></p>
-      <span>Amount (mg):</span> <span id="caffeine" style="font-weight:bold;color:red"></span>
-    </h4>
-    <h1></h1>
-    <h4>
-      <span>L-Citrulline: </span>
-      <p></p>
-      <p></p>
+      </div><p></p>
+      <span>Amount (mg):</span> <span id="caffeine" style="font-weight:bold;color:red"></span></h4><h1></h1>
+    <h4><span>L-Citrulline: </span><p></p><p></p>
       <div class="slidecontainer">
         <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_lcitrulline">
-      </div>
-      <p></p>
-      <span>Amount (g):</span> <span id="lcitrulline" style="font-weight:bold;color:red"></span>
-    </h4>
-    <h1></h1>
-    <h4>
-      <span>Beta Alanine: </span>
-      <p></p>
-      <p></p>
+      </div><p></p>
+      <span>Amount (g):</span> <span id="lcitrulline" style="font-weight:bold;color:red"></span></h4><h1></h1>
+    <h4><span>Beta Alanine: </span><p></p><p></p>
       <div class="slidecontainer">
         <input type="range" min="0" max="4" value="0" step="0.1" class="slider" id="slide_betaalanine">
-      </div>
-      <p></p>
-      <span>Amount (g):</span> <span id="betaalanine" style="font-weight:bold;color:red"></span>
-    </h4>
+      </div><p></p>
+      <span>Amount (g):</span> <span id="betaalanine" style="font-weight:bold;color:red"></span></h4>
     <div id="room_fileds"></div>
   </div>
-</div>
+  <div class="nutrition_label">
+    <section class="nutrition-facts">
+      <header class="nutrition-facts__header">
+        <h1 class="nutrition-facts__title">Nutrition Facts</h1>
+        <h6>Serving Size: 1 scoop (10g)</h6>
+        <h6>Serving Per Container: 30</h6>
+      </header>
+      <table class="nutrition-facts__table">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h6>Amount Per Serving</h6>
+            </th>
+            <td><h6>% Daily Value*</h6></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="2">
+              <h4><b>Calories: </b>10</h4>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Total Carbohydrates: </b>
+              40mg
+            </th>
+            <td>
+              <b>2%</b>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Sodium</b>
+              40mg
+            </th>
+            <td>
+              <b>2%</b>
+            </td>
+          </tr>
 
+          <tr>
+            <td class="blank-cell">
+            </td>
+            <th>
+              Dietary Fiber
+              1g
+            </th>
+            <td>
+              <b>4%</b>
+            </td>
+          </tr>
+          <tr>
+            <td class="blank-cell">
+            </td>
+            <th>
+              Sugars
+              14g
+            </th>
+            <td>
+            </td>
+          </tr>
+          <tr class="thick-end">
+            <th colspan="2">
+              <b>Protein</b>
+              3g
+            </th>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="nutrition-facts__table--grid">
+        <tbody>
+          <tr>
+            <td colspan="2">
+              Vitamin A
+              10%
+            </td>
+            <td>
+              Vitamin C
+              0%
+            </td>
+          </tr>
+          <tr class="thin-end">
+            <td colspan="2">
+              Calcium
+              10%
+            </td>
+            <td>
+              Iron
+              6%
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+
+      <table class="nutrition-facts__table--small small-info">
+        <thead>
+          <tr>
+            <td colspan="2"></td>
+            <th>Calories:</th>
+            <th>2,000</th>
+            <th>2,500</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="2">Total Fat</th>
+            <td>Less than</td>
+            <td>65g</td>
+            <td>80g</td>
+          </tr>
+          <tr>
+            <td class="blank-cell"></td>
+            <th>Saturated Fat</th>
+            <td>Less than</td>
+            <td>20g</td>
+            <td>25g</td>
+          </tr>
+          <tr>
+            <th colspan="2">Cholesterol</th>
+            <td>Less than</td>
+            <td>300mg</td>
+            <td>300 mg</td>
+          </tr>
+          <tr>
+            <th colspan="2">Sodium</th>
+            <td>Less than</td>
+            <td>2,400mg</td>
+            <td>2,400mg</td>
+          </tr>
+          <tr>
+            <th colspan="3">Total Carbohydrate</th>
+            <td>300g</td>
+            <td>375g</td>
+          </tr>
+          <tr>
+            <td class="blank-cell"></td>
+            <th colspan="2">Dietary Fiber</th>
+            <td>25g</td>
+            <td>30g</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="small-info">
+        Calories per gram:
+      </p>
+      <p class="small-info text-center">
+        Fat 9
+        &bull;
+        Carbohydrate 4
+        &bull;
+        Protein 4
+      </p>
+
+    </section>
+  </div>
+</div>
 <!-- SCRIPTS -->
 <script>
   /* *********************************
@@ -183,8 +432,8 @@ permalink: /demo/
     var slide_id = "slide_creatine";
     var objTo = document.getElementById('room_fileds');
     var slidetest = document.createElement("div");
-    slidetest.innerHTML = '                                                  \
-        <div class="label">' + name + ':</div>                                     \
+    slidetest.innerHTML = '                                                    \
+        <div class="label">' + name + ':</div>                                 \
         <div class="slidecontainer">                                           \
           <input type="range"                                                  \
            min="0"                                                             \
@@ -192,9 +441,9 @@ permalink: /demo/
            width=50%                                                           \
            value="0"                                                           \
            class="slider"                                                      \
-           id=slide_id>                                                \
+           id=slide_id>                                                        \
         <span>Amount:</span>                                                   \
-        <span id=val style="font-weight:bold;color:red"></span>         \
+        <span id=val style="font-weight:bold;color:red"></span>                \
         <span>mg</span>                                                        \
         </div>                                                                 \
         <div id="room_fileds"></div>';
@@ -204,22 +453,27 @@ permalink: /demo/
 
   var slide_caffeine = document.getElementById("slide_caffeine");
   var caffeine = document.getElementById("caffeine");
-  caffeine.innerHTML = slide_caffeine.value;
+  caffeine.innerHTML = slide_caffeine.value/1000;
   slide_caffeine.oninput = function() {
     caffeine.innerHTML = this.value;
+    document.getElementById("caffeine_label").innerHTML = this.value;
+    console.log(caffeine);
   }
+
   var slide_creatine = document.getElementById("slide_creatine");
   var creatine = document.getElementById("creatine");
   creatine.innerHTML = slide_creatine.value;
   slide_creatine.oninput = function() {
     creatine.innerHTML = this.value;
   }
+
   var slide_betaalanine = document.getElementById("slide_betaalanine");
   var betaalanine = document.getElementById("betaalanine");
   betaalanine.innerHTML = slide_betaalanine.value;
   slide_betaalanine.oninput = function() {
     betaalanine.innerHTML = this.value;
   }
+
   var slide_lcitrulline = document.getElementById("slide_lcitrulline");
   var lcitrulline = document.getElementById("lcitrulline");
   lcitrulline.innerHTML = slide_lcitrulline.value;
