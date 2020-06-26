@@ -1,512 +1,555 @@
----
-layout: page
-title: Demo
-permalink: /demo/
----
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<style>
-  #myInput {
-    box-sizing: border-box;
-    background-image: url('searchicon.png');
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 16px;
-    padding: 14px 20px 12px 45px;
-    border: none;
-    border-bottom: 1px solid #ddd;
-  }
-  #myInput:focus {
-    outline: 3px solid #ddd;
-  }
-  .dropbtn {
-    background-color: #cc4125ff;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  .dropbtn:hover,
-  .dropbtn:focus {
-    background-color: #aa4125ff;
-  }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 230px;
-    overflow: auto;
-    border: 1px solid #ddd;
-    z-index: 1;
-  }
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  .dropdown a:hover {
-    background-color: #ddd;
-  }
-  .show {
-    display: block;
-  }
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/bde.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/ionicons.min.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/syntax.css" />
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 0.5fr 1.5fr;
-    grid-template-rows: 0.5fr 2.5fr 0.5fr;
-    gap: 1px 1px;
-    grid-template-areas: "nutrition_label dropdown supplements""nutrition_label . supplements""footer footer footer";
-  }
-  .header {
-    grid-area: header;
-  }
-  .footer {
-    grid-area: footer;
-  }
-  .nutrition_label {
-    grid-area: nutrition_label;
-  }
-  .supplements {
-    grid-area: supplements;
-  }
-  .dropdown {
-    grid-area: dropdown;
-  }
+    <!-- Js -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/min/waypoints.min.js"></script>
+    <script src="/js/jquery.counterup.js"></script>
 
-  .slidecontainer {
-    width: 50%;
-  }
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 5px;
-    border-radius: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  .slider:hover {
-    opacity: 1;
-  }
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-  }
 
-  .nutrition-facts {
-    border: 1px solid black;
-    margin: 20px;
-    float: left;
-    width: 75%;
-    padding: 0.5rem;
-    table {
-      border-collapse: collapse;
-    }
-  }
-  .nutrition-facts p {
-    font-size: 10px;
-    margin: 1px 0 1px 0;
-  }
-  .nutrition-facts h6 {
-    /* font-size: 10px; */
-    margin: 1px 0 1px 0;
-  }
-  .nutrition-facts__title {
-    font-weight: bold;
-    font-size: 2rem;
-    margin: 0 0 0.25rem 0;
-  }
-  .nutrition-facts__header {
-    border-bottom: 10px solid black;
-    padding: 0 0 0.25rem 0;
-    margin: 0 0 0.5rem 0;
-    p {
-      margin: 0;
-    }
-  }
-  .nutrition-facts__table {
-    width: 100%;
-    thead tr {
-      th,
-      td {
-        border: 0;
+    <script src="/js/main.js"></script>
+
+    <!--
+    /*
+     * BDE Layout
+     * Ported to Jekyll by Alexander Hay
+     * https://github.com/alexanderhay2020
+     *
+     */
+    -->
+  </head>
+  <body>
+    <style>
+      #myInput {
+        box-sizing: border-box;
+        background-image: url('../img/searchicon.png');
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px;
+        border: none;
+        border-bottom: 1px solid #ddd;
       }
-    }
-    th,
-    td {
-      font-weight: normal;
-      text-align: left;
-      padding: 0.25rem 0;
-      border-top: 1px solid black;
-      white-space: nowrap;
-    }
-    td {
-      &:last-child {
+      #myInput:focus {
+        outline: 3px solid #ddd;
+      }
+      .dropbtn {
+        background-color: #cc4125ff;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      .dropbtn:hover,
+      .dropbtn:focus {
+        background-color: #aa4125ff;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown a:hover {
+        background-color: #ddd;
+      }
+      .show {
+        display: block;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 1.5fr;
+        grid-template-rows: 0.5fr 2.5fr 0.5fr;
+        gap: 1px 1px;
+        grid-template-areas: "nutrition_label dropdown supplements""nutrition_label . supplements";
+      }
+      .nutrition_label {
+        grid-area: nutrition_label;
+      }
+      .supplements {
+        grid-area: supplements;
+        width: 50%
+      }
+      .dropdown {
+        grid-area: dropdown;
+      }
+
+      .slidecontainer {
+        width: 50%;
+      }
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 5px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+      .slider:hover {
+        opacity: 1;
+      }
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+      }
+
+
+
+      .nutrition-facts {
+        border: 1px solid black;
+        margin: 20px;
+        float: left;
+        width: 75%;
+        padding: 0.5rem;
+        table {
+          border-collapse: collapse;
+        }
+      }
+      .nutrition-facts p {
+        font-size: 10px;
+        margin: 1px 0 1px 0;
+      }
+      .nutrition-facts h6 {
+        /* font-size: 10px; */
+        margin: 1px 0 1px 0;
+      }
+      .nutrition-facts__title {
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0 0 0.25rem 0;
+      }
+      .nutrition-facts__header {
+        border-bottom: 10px solid black;
+        padding: 0 0 0.25rem 0;
+        margin: 0 0 0.5rem 0;
+        p {
+          margin: 0;
+        }
+      }
+      .nutrition-facts__table {
+        width: 100%;
+        thead tr {
+          th,
+          td {
+            border: 0;
+          }
+        }
+        th,
+        td {
+          font-weight: normal;
+          text-align: left;
+          padding: 0.25rem 0;
+          border-top: 1px solid black;
+          white-space: nowrap;
+        }
+        td {
+          &:last-child {
+            text-align: right;
+          }
+        }
+        .blank-cell {
+          width: 1rem;
+          border-top: 0;
+        }
+        .thick-row {
+          th,
+          td {
+            border-top-width: 5px;
+          }
+        }
+      }
+      .nutrition-facts__table--small {
+        @extend .nutrition-facts__table;
+        border-bottom: 1px solid #999;
+        margin: 0 0 0.5rem 0;
+        thead {
+          tr {
+            border-bottom: 1px solid black;
+          }
+        }
+        td {
+          &:last-child {
+            text-align: left;
+          }
+        }
+        th,
+        td {
+          border: 0;
+          padding: 0;
+        }
+      }
+      .nutrition-facts__table--grid {
+        @extend .nutrition-facts__table;
+        margin: 0 0 0.5rem 0;
+        td {
+          &:last-child {
+            text-align: left;
+            &::before {
+              content: "•";
+              font-weight: bold;
+              margin: 0 0.25rem 0 0;
+            }
+          }
+        }
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-right {
         text-align: right;
       }
-    }
-    .blank-cell {
-      width: 1rem;
-      border-top: 0;
-    }
-    .thick-row {
-      th,
-      td {
-        border-top-width: 5px;
+      .thick-end {
+        border-bottom: 10px solid black;
       }
-    }
-  }
-  .nutrition-facts__table--small {
-    @extend .nutrition-facts__table;
-    border-bottom: 1px solid #999;
-    margin: 0 0 0.5rem 0;
-    thead {
-      tr {
+      .thin-end {
         border-bottom: 1px solid black;
       }
-    }
-    td {
-      &:last-child {
-        text-align: left;
-      }
-    }
-    th,
-    td {
-      border: 0;
-      padding: 0;
-    }
-  }
-  .nutrition-facts__table--grid {
-    @extend .nutrition-facts__table;
-    margin: 0 0 0.5rem 0;
-    td {
-      &:last-child {
-        text-align: left;
-        &::before {
-          content: "•";
-          font-weight: bold;
-          margin: 0 0.25rem 0 0;
-        }
-      }
-    }
-  }
-  .text-center {
-    text-align: center;
-  }
-  .text-right {
-    text-align: right;
-  }
-  .thick-end {
-    border-bottom: 10px solid black;
-  }
-  .thin-end {
-    border-bottom: 1px solid black;
-  }
+    </style>
 
-</style>
+    <header>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- header Nav Start -->
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                  <img src="/img/logo_sm.png" alt="Logo">
+                </a>
+              </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/demo">Demo</a></li>
+                    <!-- <li><a href="/blog">Blog</a></li> -->
+                    <!-- <li><a href="#">Service</a></li> -->
+                    <li><a href="/contact">Contact</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="grid-container">
+      <div class="dropdown">
+        <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
+        <div id="myDropdown" class="dropdown-content">
+          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+          <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
+          <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
+          <a onclick="add_fields('Creatine','creatine')">Creatine</a>
+          <a onclick="add_fields('L-Citrulline','lcitrulline')">L-Citrulline</a>
+        </div>
+      </div>
+      <div class="supplements" id="supplement_list"></div>
+      <div class="nutrition_label">
+        <section class="nutrition-facts">
+          <header class="nutrition-facts__header">
+            <h1 class="nutrition-facts__title">Nutrition Facts</h1>
+            <h6>Serving Size: 1 scoop (10g)</h6>
+            <h6>Serving Per Container: 30</h6>
+          </header>
+          <table class="nutrition-facts__table">
+            <thead>
+              <tr>
+                <th colspan="2">
+                  <h6>Amount Per Serving</h6>
+                </th>
+                <td><h6>% Daily Value*</h6></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th colspan="2">
+                  <h4><b>Calories: </b>10</h4>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>Total Carbohydrates: </b>
+                  40mg
+                </th>
+                <td>
+                  <b>2%</b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>Sodium</b>
+                  40mg
+                </th>
+                <td>
+                  <b>2%</b>
+                </td>
+              </tr>
 
-<div class="grid-container">
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Add Supplement</button>
-    <div id="myDropdown" class="dropdown-content">
-      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
-      <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
-      <a onclick="add_fields('Creatine','creatine')">Creatine</a>
-      <a onclick="add_fields('L-Citrulline','lcitrulline')">L-Citrulline</a>
+              <tr>
+                <td class="blank-cell">
+                </td>
+                <th>
+                  Dietary Fiber
+                  1g
+                </th>
+                <td>
+                  <b>4%</b>
+                </td>
+              </tr>
+              <tr>
+                <td class="blank-cell">
+                </td>
+                <th>
+                  Sugars
+                  14g
+                </th>
+                <td>
+                </td>
+              </tr>
+              <tr class="thick-end">
+                <th colspan="2">
+                  <b>Protein</b>
+                  3g
+                </th>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="nutrition-facts__table--grid">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  Vitamin A
+                  10%
+                </td>
+                <td>
+                  Vitamin C
+                  0%
+                </td>
+              </tr>
+              <tr class="thin-end">
+                <td colspan="2">
+                  Calcium
+                  10%
+                </td>
+                <td>
+                  Iron
+                  6%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+          <table class="nutrition-facts__table--small small-info">
+            <thead>
+              <tr>
+                <td colspan="2"></td>
+                <th>Calories:</th>
+                <th>2,000</th>
+                <th>2,500</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th colspan="2">Total Fat</th>
+                <td>Less than</td>
+                <td>65g</td>
+                <td>80g</td>
+              </tr>
+              <tr>
+                <td class="blank-cell"></td>
+                <th>Saturated Fat</th>
+                <td>Less than</td>
+                <td>20g</td>
+                <td>25g</td>
+              </tr>
+              <tr>
+                <th colspan="2">Cholesterol</th>
+                <td>Less than</td>
+                <td>300mg</td>
+                <td>300 mg</td>
+              </tr>
+              <tr>
+                <th colspan="2">Sodium</th>
+                <td>Less than</td>
+                <td>2,400mg</td>
+                <td>2,400mg</td>
+              </tr>
+              <tr>
+                <th colspan="3">Total Carbohydrate</th>
+                <td>300g</td>
+                <td>375g</td>
+              </tr>
+              <tr>
+                <td class="blank-cell"></td>
+                <th colspan="2">Dietary Fiber</th>
+                <td>25g</td>
+                <td>30g</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="small-info">
+            Calories per gram:</p>
+          <p class="small-info text-center">
+            Fat 9
+            &bull;
+            Carbohydrate 4
+            &bull;
+            Protein 4</p>
+        </section>
+      </div>
     </div>
-  </div>
-  <div class="supplements">
-    <h4><span>Creatine: </span><p></p><p></p>
-      <div class="slidecontainer">
-        <input type="range" min="0" max="25" value="0" step="0.1" class="slider" id="slide_creatine">
-      </div><p></p>
-      <span>Amount (g):</span>
-      <span id="creatine" style="font-weight:bold;color:red"></span></h4><h1></h1>
-    <h4><span>Caffeine: </span><p></p><p></p>
-      <div class="slidecontainer">
-        <input type="range" min="0" max="300" value="0" class="slider" id="slide_caffeine">
-      </div><p></p>
-      <span>Amount (mg):</span> <span id="caffeine" style="font-weight:bold;color:red"></span></h4><h1></h1>
-    <h4><span>L-Citrulline: </span><p></p><p></p>
-      <div class="slidecontainer">
-        <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="slide_lcitrulline">
-      </div><p></p>
-      <span>Amount (g):</span> <span id="lcitrulline" style="font-weight:bold;color:red"></span></h4><h1></h1>
-    <h4><span>Beta Alanine: </span><p></p><p></p>
-      <div class="slidecontainer">
-        <input type="range" min="0" max="4" value="0" step="0.1" class="slider" id="slide_betaalanine">
-      </div><p></p>
-      <span>Amount (g):</span> <span id="betaalanine" style="font-weight:bold;color:red"></span></h4>
-    <div id="room_fileds"></div>
-  </div>
-  <div class="nutrition_label">
-    <section class="nutrition-facts">
-      <header class="nutrition-facts__header">
-        <h1 class="nutrition-facts__title">Nutrition Facts</h1>
-        <h6>Serving Size: 1 scoop (10g)</h6>
-        <h6>Serving Per Container: 30</h6>
-      </header>
-      <table class="nutrition-facts__table">
-        <thead>
-          <tr>
-            <th colspan="2">
-              <h6>Amount Per Serving</h6>
-            </th>
-            <td><h6>% Daily Value*</h6></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th colspan="2">
-              <h4><b>Calories: </b>10</h4>
-            </th>
-          </tr>
-          <tr>
-            <th colspan="2">
-              <b>Total Carbohydrates: </b>
-              40mg
-            </th>
-            <td>
-              <b>2%</b>
-            </td>
-          </tr>
-          <tr>
-            <th colspan="2">
-              <b>Sodium</b>
-              40mg
-            </th>
-            <td>
-              <b>2%</b>
-            </td>
-          </tr>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            Designed by <a href="https://github.com/alexanderhay2020/">Alexander Hay</a>
+            <br>
 
-          <tr>
-            <td class="blank-cell">
-            </td>
-            <th>
-              Dietary Fiber
-              1g
-            </th>
-            <td>
-              <b>4%</b>
-            </td>
-          </tr>
-          <tr>
-            <td class="blank-cell">
-            </td>
-            <th>
-              Sugars
-              14g
-            </th>
-            <td>
-            </td>
-          </tr>
-          <tr class="thick-end">
-            <th colspan="2">
-              <b>Protein</b>
-              3g
-            </th>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                Last updated: Jun, 2020.
 
-      <table class="nutrition-facts__table--grid">
-        <tbody>
-          <tr>
-            <td colspan="2">
-              Vitamin A
-              10%
-            </td>
-            <td>
-              Vitamin C
-              0%
-            </td>
-          </tr>
-          <tr class="thin-end">
-            <td colspan="2">
-              Calcium
-              10%
-            </td>
-            <td>
-              Iron
-              6%
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    /* *********************************
+                JAVASCRIPT
+    ********************************* */
 
-      <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+    var index = 0;
 
-      <table class="nutrition-facts__table--small small-info">
-        <thead>
-          <tr>
-            <td colspan="2"></td>
-            <th>Calories:</th>
-            <th>2,000</th>
-            <th>2,500</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th colspan="2">Total Fat</th>
-            <td>Less than</td>
-            <td>65g</td>
-            <td>80g</td>
-          </tr>
-          <tr>
-            <td class="blank-cell"></td>
-            <th>Saturated Fat</th>
-            <td>Less than</td>
-            <td>20g</td>
-            <td>25g</td>
-          </tr>
-          <tr>
-            <th colspan="2">Cholesterol</th>
-            <td>Less than</td>
-            <td>300mg</td>
-            <td>300 mg</td>
-          </tr>
-          <tr>
-            <th colspan="2">Sodium</th>
-            <td>Less than</td>
-            <td>2,400mg</td>
-            <td>2,400mg</td>
-          </tr>
-          <tr>
-            <th colspan="3">Total Carbohydrate</th>
-            <td>300g</td>
-            <td>375g</td>
-          </tr>
-          <tr>
-            <td class="blank-cell"></td>
-            <th colspan="2">Dietary Fiber</th>
-            <td>25g</td>
-            <td>30g</td>
-          </tr>
-        </tbody>
-      </table>
 
-      <p class="small-info">
-        Calories per gram:
-      </p>
-      <p class="small-info text-center">
-        Fat 9
-        &bull;
-        Carbohydrate 4
-        &bull;
-        Protein 4
-      </p>
+    function button_showhide_toggle() {
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
 
-    </section>
-  </div>
-</div>
-<!-- SCRIPTS -->
-<script>
-  /* *********************************
-              JAVASCRIPT
-  ********************************* */
+    function add_fields(name_proper, name) {
 
-  var index = 0;
+      var objTo = document.getElementById('supplement_list');
+      
+      // Names
+      var slider_id = "slide_";
+      slider_id = slider_id.concat(name);
 
-  /* When the user clicks on the button,
-  toggle between hiding and showing the dropdown content */
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
+      var output_id = "output_";
+      output_id = output_id.concat(name);
 
-  function add_fields(name, val) {
+      // Elements & Objects
+      var supplement = new Object();
+      var slidecontainer = document.createElement(name);
+      var input = document.createElement("input");
+      var output = document.createElement("output");
 
-    // if (val=="creatine"){
-    var slide_id = "slide_creatine";
-    var objTo = document.getElementById('room_fileds');
-    var slidetest = document.createElement("div");
-    slidetest.innerHTML = '                                                    \
-        <div class="label">' + name + ':</div>                                 \
-        <div class="slidecontainer">                                           \
-          <input type="range"                                                  \
-           min="0"                                                             \
-           max="300"                                                           \
-           width=50%                                                           \
-           value="0"                                                           \
-           class="slider"                                                      \
-           id=slide_id>                                                        \
-        <span>Amount:</span>                                                   \
-        <span id=val style="font-weight:bold;color:red"></span>                \
-        <span>mg</span>                                                        \
-        </div>                                                                 \
-        <div id="room_fileds"></div>';
-    objTo.appendChild(slidetest)
-    // }
-  }
+      supplement.name = name;
+      supplement.slider_id = slider_id;
 
-  var slide_caffeine = document.getElementById("slide_caffeine");
-  var caffeine = document.getElementById("caffeine");
-  caffeine.innerHTML = slide_caffeine.value/1000;
-  slide_caffeine.oninput = function() {
-    caffeine.innerHTML = this.value;
-    document.getElementById("caffeine_label").innerHTML = this.value;
-    console.log(caffeine);
-  }
+      slidecontainer.innerHTML = '<span>'+name_proper+'</span>';
 
-  var slide_creatine = document.getElementById("slide_creatine");
-  var creatine = document.getElementById("creatine");
-  creatine.innerHTML = slide_creatine.value;
-  slide_creatine.oninput = function() {
-    creatine.innerHTML = this.value;
-  }
+      input.class = "slider";
+      input.type = "range";
+      input.min = 0;
+      input.max = 300;
+      input.value = 0;
+      input.id = slider_id;
 
-  var slide_betaalanine = document.getElementById("slide_betaalanine");
-  var betaalanine = document.getElementById("betaalanine");
-  betaalanine.innerHTML = slide_betaalanine.value;
-  slide_betaalanine.oninput = function() {
-    betaalanine.innerHTML = this.value;
-  }
+      output.id = output_id;
+      // output.innerhtml =  '<p>Value: <span id="output_id"></span></p>';
 
-  var slide_lcitrulline = document.getElementById("slide_lcitrulline");
-  var lcitrulline = document.getElementById("lcitrulline");
-  lcitrulline.innerHTML = slide_lcitrulline.value;
-  slide_lcitrulline.oninput = function() {
-    lcitrulline.innerHTML = this.value;
-  }
+      // Append to container
+      slidecontainer.appendChild(input);
+      slidecontainer.appendChild(output);
+      objTo.appendChild(slidecontainer, slider_id);
 
-  function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-      txtValue = a[i].textContent || a[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        a[i].style.display = "";
-      } else {
-        a[i].style.display = "none";
+      // Updates value
+      supplement.slider_value = document.getElementById(supplement.slider_id);
+      output.innerhtml = supplement.slider_value.value;
+      supplement.slider_value.oninput = function() {
+        output.innerHTML = '<span style="font-weight:bold;color:red">Amount: '+this.value+'</span>';
+        supplement.qty = this.value;
       }
     }
-  }
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
         }
       }
     }
-  }
-
-</script>
+        // window.onclick = function(event) {
+    //   if (!event.target.matches('.dropbtn')) {
+    //     var dropdowns = document.getElementsByClassName("dropdown-content");
+    //     var i;
+    //     for (i = 0; i < dropdowns.length; i++) {
+    //       var openDropdown = dropdowns[i];
+    //       if (openDropdown.classList.contains('show')) {
+    //         openDropdown.classList.remove('show');
+    //       }
+    //     }
+    //   }
+    // }
+  </script>
+</html>
