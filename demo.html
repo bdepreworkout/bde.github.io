@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html class="no-js">
+  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -468,10 +470,11 @@
     /* *********************************
                 JAVASCRIPT
     ********************************* */
-
-    var index = 0;
-
-
+    var supplment_data = '{"supplements":[' +
+    '{"name":"Beta Alanine","max":300,"unit":"g"},' +
+    '{"name":"Caffeine","max":300,"unit":"mg" },' +
+    '{"name":"Creatine","max":25,"unit":"g" },' +
+    '{"name":"L-Citrulline","max":10,"unit":"g" }]}';
     function button_showhide_toggle() {
       /* When the user clicks on the button,
       toggle between hiding and showing the dropdown content */
@@ -480,47 +483,79 @@
 
     function add_fields(name_proper, name) {
 
+      // Get supplement list
       var objTo = document.getElementById('supplement_list');
       
-      // Names
-      var slider_id = "slide_";
-      slider_id = slider_id.concat(name);
+      // console.log(objTo.children.length);             // this is a number
+      // console.log(objTo.children);                    // this is an object
+      // console.log(name);                              // this is a string
+      // console.log(typeof(objTo.children));            // verify type
+      
 
-      var output_id = "output_";
-      output_id = output_id.concat(name);
+      var length = objTo.children.length;
+      var i;
 
-      // Elements & Objects
-      var supplement = new Object();
-      var slidecontainer = document.createElement(name);
-      var input = document.createElement("input");
-      var output = document.createElement("output");
+      if (objTo.children.length==0){
+        var do_we_add = 1; // 0 for no, 1 for yes; initialize yes to enter first supplement
+      }
+      else{
+        var do_we_add = 0;
+      }
 
-      supplement.name = name;
-      supplement.slider_id = slider_id;
+      for (i=0; i<length; i++){
 
-      slidecontainer.innerHTML = '<span>'+name_proper+'</span>';
+        // if the name clicked is the same as child i, then we do not add it
+        if (name==objTo.children[i].localName){
+          do_we_add = 0; 
+          console.log(do_we_add);             // this is a number
+          break;
+        }
+        else{
+          do_we_add = 1;
+          console.log(do_we_add);             // this is a number
+        }
+      }
+      if (do_we_add==1){
+        
+        // Names
+        var slider_id = "slide_";
+        slider_id = slider_id.concat(name);
 
-      input.class = "slider";
-      input.type = "range";
-      input.min = 0;
-      input.max = 300;
-      input.value = 0;
-      input.id = slider_id;
+        var output_id = "output_";
+        output_id = output_id.concat(name);
 
-      output.id = output_id;
-      // output.innerhtml =  '<p>Value: <span id="output_id"></span></p>';
+        // Elements & Objects
+        var supplement = new Object();
+        var slidecontainer = document.createElement(name);
+        var input = document.createElement("input");
+        var output = document.createElement("output");
 
-      // Append to container
-      slidecontainer.appendChild(input);
-      slidecontainer.appendChild(output);
-      objTo.appendChild(slidecontainer, slider_id);
+        supplement.name = name;
+        supplement.slider_id = slider_id;
 
-      // Updates value
-      supplement.slider_value = document.getElementById(supplement.slider_id);
-      output.innerhtml = supplement.slider_value.value;
-      supplement.slider_value.oninput = function() {
-        output.innerHTML = '<span style="font-weight:bold;color:red">Amount: '+this.value+'</span>';
-        supplement.qty = this.value;
+        slidecontainer.innerHTML = '<span>'+name_proper+'</span>';
+
+        input.class = "slider";
+        input.type = "range";
+        input.min = 0;
+        input.max = 300;
+        input.value = 0;
+        input.id = slider_id;
+
+        output.id = output_id;
+
+        // Append to container
+        slidecontainer.appendChild(input);
+        slidecontainer.appendChild(output);
+        objTo.appendChild(slidecontainer, slider_id);
+
+        // Updates value
+        supplement.slider_value = document.getElementById(supplement.slider_id);
+        output.innerhtml = supplement.slider_value.value;
+        supplement.slider_value.oninput = function() {
+          output.innerHTML = '<span style="font-weight:bold;color:red">Amount: '+this.value+'</span>';
+          supplement.qty = this.value;
+        }
       }
     }
 
@@ -539,7 +574,8 @@
         }
       }
     }
-        // window.onclick = function(event) {
+        
+    // window.onclick = function(event) {
     //   if (!event.target.matches('.dropbtn')) {
     //     var dropdowns = document.getElementsByClassName("dropdown-content");
     //     var i;
