@@ -91,7 +91,7 @@
       .dropdown a:hover {
         background-color: #ddd;
       }
-      .show {
+      .dropdown .show {
         display: block;
       }
 
@@ -112,31 +112,6 @@
       .dropdown {
         grid-area: dropdown;
       }
-
-      .slidecontainer {
-        width: 50%;
-      }
-      .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 5px;
-        border-radius: 5px;
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-      }
-      .slider:hover {
-        opacity: 1;
-      }
-      .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 100%;
-      }
-
-
 
       .nutrition-facts {
         border: 1px solid black;
@@ -235,6 +210,7 @@
           }
         }
       }
+      
       .text-center {
         text-align: center;
       }
@@ -246,6 +222,61 @@
       }
       .thin-end {
         border-bottom: 1px solid black;
+      }
+
+      .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .popup .popuptext {
+        /* The actual popup */
+
+        visibility: hidden;
+        width: 160px;
+        background-color: #fff;
+        border-style: solid;
+        border-color: red;
+        color: #000;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+      }
+      .popup .show {
+        /* Toggle this class - hide and show the popup */
+        visibility: visible;
+      }
+
+      .slidecontainer {
+        width: 50%;
+      }
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 5px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+      .slider:hover {
+        opacity: 1;
+      }
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
       }
     </style>
 
@@ -286,6 +317,9 @@
     </header>
     <div class="grid-container">
       <div class="dropdown">
+        <div class="popup" onclick="error_balloon()">
+          <span class="popuptext" id="myPopup">Supplement Already Added</span>
+        </div>
         <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
         <div id="myDropdown" class="dropdown-content">
           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
@@ -485,18 +519,16 @@
 
       // Get supplement list
       var objTo = document.getElementById('supplement_list');
-      
-      // console.log(objTo.children.length);             // this is a number
-      // console.log(objTo.children);                    // this is an object
-      // console.log(name);                              // this is a string
-      // console.log(typeof(objTo.children));            // verify type
-      
 
       var length = objTo.children.length;
       var i;
 
-      if (objTo.children.length==0){
-        var do_we_add = 1; // 0 for no, 1 for yes; initialize yes to enter first supplement
+      var slider_id = "slide_";
+      slider_id = slider_id.concat(name);
+
+      // 1 for yes, 0 for no; initialize yes to enter first supplement
+      if (length==0){
+        var do_we_add = 1; 
       }
       else{
         var do_we_add = 0;
@@ -506,21 +538,21 @@
 
         // if the name clicked is the same as child i, then we do not add it
         if (name==objTo.children[i].localName){
+          // if name is on list we do not add it to the list
           do_we_add = 0; 
-          console.log(do_we_add);             // this is a number
+          // console.log(do_we_add);
+          error_balloon();
           break;
         }
         else{
+          // if name is not on list we add it to the list
           do_we_add = 1;
-          console.log(do_we_add);             // this is a number
+          // console.log(do_we_add);
         }
       }
       if (do_we_add==1){
         
         // Names
-        var slider_id = "slide_";
-        slider_id = slider_id.concat(name);
-
         var output_id = "output_";
         output_id = output_id.concat(name);
 
@@ -557,6 +589,11 @@
           supplement.qty = this.value;
         }
       }
+    }
+
+    function error_balloon() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
     }
 
     function filterFunction() {
