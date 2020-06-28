@@ -510,13 +510,13 @@
     const supplement_data = [
       {name: 'betaalanine', propername: 'Beta Alanine', max: 4, unit: 'g', step: 0.1},
       {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1},
-      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g', step: 0.5},
+      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g', step: 0.1},
       {name: 'lcitrulline', propername: 'L-Citrulline', max: 10, unit: 'g', step: 0.1},
       {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1},
       {name: 'theanine', propername: 'Theanine', max: 100, unit: 'mg', step: 1},
-      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg', step: 0.5},
+      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg', step: 0.1},
       {name: 'taurine', propername: 'Taurine', max: 2, unit: 'g', step: 0.1},
-      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.5}
+      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1}
     ];
 
     function button_showhide_toggle() {
@@ -526,7 +526,7 @@
       // Populate list
       var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
       var i;
-      for (i=1; i<=6; i++) {
+      for (i=0; i<=(supplement_data.length-1); i++) {
         x = x + "<a onclick=add_fields('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
       }
       document.getElementById("myDropdown").innerHTML = x;
@@ -578,7 +578,7 @@
         // Elements & Objects
         var slidecontainer = document.createElement(supplement.name);
         supplement.slider_id = slider_id;
-        slidecontainer.innerHTML = '<span>'+supplement.propername+'</span>';
+        slidecontainer.innerHTML = '<h4>'+supplement.propername+'</h4>';
 
         var input = document.createElement("input");
         input.class = "slider";
@@ -599,11 +599,11 @@
         slidecontainer.appendChild(output);
         objTo.appendChild(slidecontainer, slider_id);
 
-        // Updates value
+        // Update value
         supplement.slider_value = document.getElementById(supplement.slider_id);
         output.innerhtml = supplement.slider_value.value;
         supplement.slider_value.oninput = function() {
-          output.innerHTML = '<span style="font-weight:bold;color:red">Amount: '+this.value+'</span>';
+          output.innerHTML = '<span style="font-weight:bold;color:red">Amount: ' + this.value + ' ' + supplement.unit + '</span>';
           supplement.qty = this.value;
           // console.log(supplement);
         }

@@ -43,13 +43,4 @@ $(document).ready(function(){
         delay: 10,
         time: 1000
     });
-
-	// Slider
-	var slider = document.getElementById("slide_supp");
-	var supplement = document.getElementById("val");
-	supplement.innerHTML = slider.value; // Display the default slider value
-
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = function() {output.innerHTML = this.value;}
-
 });
