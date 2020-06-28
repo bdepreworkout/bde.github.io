@@ -80,6 +80,7 @@
         min-width: 230px;
         overflow: auto;
         border: 1px solid #ddd;
+        color: black;
         z-index: 1;
       }
       .dropdown-content a {
@@ -114,7 +115,9 @@
       }
 
       .nutrition-facts {
-        border: 1px solid black;
+        border: 1px;
+        border-style: solid;
+        border-color: black;
         margin: 20px;
         float: left;
         width: 75%;
@@ -178,11 +181,15 @@
       }
       .nutrition-facts__table--small {
         @extend .nutrition-facts__table;
-        border-bottom: 1px solid #999;
+        border-bottom: 1px; 
+        border-style: solid;
+        border-color: #999;
         margin: 0 0 0.5rem 0;
         thead {
           tr {
-            border-bottom: 1px solid black;
+            border-bottom: 1px;
+            border-style: solid;
+            border-color: black;
           }
         }
         td {
@@ -318,15 +325,15 @@
     <div class="grid-container">
       <div class="dropdown">
         <div class="popup" onclick="error_balloon()">
-          <span class="popuptext" id="myPopup">Supplement Already Added</span>
+          <span class="popuptext" href="#popup1" id="myPopup">Supplement Already Added</span>
         </div>
         <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
         <div id="myDropdown" class="dropdown-content">
           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-          <a onclick="add_fields('Beta Alanine','betaalanine')">Beta Alanine</a>
-          <a onclick="add_fields('Caffeine','caffeine')">Caffeine</a>
-          <a onclick="add_fields('Creatine','creatine')">Creatine</a>
-          <a onclick="add_fields('L-Citrulline','lcitrulline')">L-Citrulline</a>
+          <a onclick="add_fields('betaalanine')">Beta Alanine</a>
+          <a onclick="add_fields('caffeine')">Caffeine</a>
+          <a onclick="add_fields('creatine')">Creatine</a>
+          <a onclick="add_fields('lcitrulline')">L-Citrulline</a>
         </div>
       </div>
       <div class="supplements" id="supplement_list"></div>
@@ -504,18 +511,26 @@
     /* *********************************
                 JAVASCRIPT
     ********************************* */
-    var supplment_data = '{"supplements":[' +
-    '{"name":"Beta Alanine","max":300,"unit":"g"},' +
-    '{"name":"Caffeine","max":300,"unit":"mg" },' +
-    '{"name":"Creatine","max":25,"unit":"g" },' +
-    '{"name":"L-Citrulline","max":10,"unit":"g" }]}';
+
+    const supplment_data = [
+      {name: 'betaalanine', propername: 'Beta Alanine', max: 4, unit: 'g'},
+      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg'},
+      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g'},
+      {name: 'lcitrulline', propername: 'L-Citrulline', max: 10, unit: 'g'},
+      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g'},
+      {name: 'theanine', propername: 'Theanine', max: 100, unit: 'mg'},
+      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg'},
+      {name: 'taurine', propername: 'Taurine', max: 2, unit: 'g'},
+      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g'}
+    ];
+
     function button_showhide_toggle() {
       /* When the user clicks on the button,
       toggle between hiding and showing the dropdown content */
       document.getElementById("myDropdown").classList.toggle("show");
     }
 
-    function add_fields(name_proper, name) {
+    function add_fields(name) {
 
       // Get supplement list
       var objTo = document.getElementById('supplement_list');
@@ -552,20 +567,26 @@
       }
       if (do_we_add==1){
         
+        function getSupp(supp) { 
+          return supp.name === name;
+        }
+
+
+        var supplement = supplment_data.find(getSupp);
         // Names
         var output_id = "output_";
-        output_id = output_id.concat(name);
+        output_id = output_id.concat(supplement.name);
 
         // Elements & Objects
-        var supplement = new Object();
-        var slidecontainer = document.createElement(name);
+        // var supplement = new Object();
+        var slidecontainer = document.createElement(supplement.name);
         var input = document.createElement("input");
         var output = document.createElement("output");
 
-        supplement.name = name;
+        // supplement.name = name;
         supplement.slider_id = slider_id;
 
-        slidecontainer.innerHTML = '<span>'+name_proper+'</span>';
+        slidecontainer.innerHTML = '<span>'+supplement.propername+'</span>';
 
         input.class = "slider";
         input.type = "range";
@@ -587,6 +608,7 @@
         supplement.slider_value.oninput = function() {
           output.innerHTML = '<span style="font-weight:bold;color:red">Amount: '+this.value+'</span>';
           supplement.qty = this.value;
+          // console.log(supplement);
         }
       }
     }
