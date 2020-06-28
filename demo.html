@@ -329,11 +329,6 @@
         </div>
         <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
         <div id="myDropdown" class="dropdown-content">
-          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-          <a onclick="add_fields('betaalanine')">Beta Alanine</a>
-          <a onclick="add_fields('caffeine')">Caffeine</a>
-          <a onclick="add_fields('creatine')">Creatine</a>
-          <a onclick="add_fields('lcitrulline')">L-Citrulline</a>
         </div>
       </div>
       <div class="supplements" id="supplement_list"></div>
@@ -512,22 +507,29 @@
                 JAVASCRIPT
     ********************************* */
 
-    const supplment_data = [
-      {name: 'betaalanine', propername: 'Beta Alanine', max: 4, unit: 'g'},
-      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg'},
-      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g'},
-      {name: 'lcitrulline', propername: 'L-Citrulline', max: 10, unit: 'g'},
-      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g'},
-      {name: 'theanine', propername: 'Theanine', max: 100, unit: 'mg'},
-      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg'},
-      {name: 'taurine', propername: 'Taurine', max: 2, unit: 'g'},
-      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g'}
+    const supplement_data = [
+      {name: 'betaalanine', propername: 'Beta Alanine', max: 4, unit: 'g', step: 0.1},
+      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1},
+      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g', step: 0.5},
+      {name: 'lcitrulline', propername: 'L-Citrulline', max: 10, unit: 'g', step: 0.1},
+      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1},
+      {name: 'theanine', propername: 'Theanine', max: 100, unit: 'mg', step: 1},
+      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg', step: 0.5},
+      {name: 'taurine', propername: 'Taurine', max: 2, unit: 'g', step: 0.1},
+      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.5}
     ];
 
     function button_showhide_toggle() {
-      /* When the user clicks on the button,
-      toggle between hiding and showing the dropdown content */
+      // Toggle showing/hiding list
       document.getElementById("myDropdown").classList.toggle("show");
+      
+      // Populate list
+      var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
+      var i;
+      for (i=1; i<=6; i++) {
+        x = x + "<a onclick=add_fields('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
+      }
+      document.getElementById("myDropdown").innerHTML = x;
     }
 
     function add_fields(name) {
@@ -566,35 +568,30 @@
         }
       }
       if (do_we_add==1){
-        
+
+        // Find supplement info from data table
         function getSupp(supp) { 
           return supp.name === name;
         }
-
-
-        var supplement = supplment_data.find(getSupp);
-        // Names
-        var output_id = "output_";
-        output_id = output_id.concat(supplement.name);
+        var supplement = supplement_data.find(getSupp);
 
         // Elements & Objects
-        // var supplement = new Object();
         var slidecontainer = document.createElement(supplement.name);
-        var input = document.createElement("input");
-        var output = document.createElement("output");
-
-        // supplement.name = name;
         supplement.slider_id = slider_id;
-
         slidecontainer.innerHTML = '<span>'+supplement.propername+'</span>';
 
+        var input = document.createElement("input");
         input.class = "slider";
         input.type = "range";
         input.min = 0;
-        input.max = 300;
+        input.max = supplement.max;
+        input.step = supplement.step;
         input.value = 0;
         input.id = slider_id;
 
+        var output = document.createElement("output");
+        var output_id = "output_";
+        output_id = output_id.concat(supplement.name);
         output.id = output_id;
 
         // Append to container
