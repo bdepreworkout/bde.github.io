@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="no-js">
+<html">
   
   <head>
     <meta charset="utf-8">
@@ -115,24 +115,14 @@
       }
 
       .nutrition-facts {
-        border: 1px;
-        border-style: solid;
-        border-color: black;
-        margin: 20px;
-        float: left;
-        width: 75%;
-        padding: 0.5rem;
-        table {
-          border-collapse: collapse;
-        }
-      }
-      .nutrition-facts p {
-        font-size: 10px;
-        margin: 1px 0 1px 0;
-      }
-      .nutrition-facts h6 {
-        /* font-size: 10px; */
-        margin: 1px 0 1px 0;
+        border: 1px solid black;
+        /* margin: 50px; */
+        /* float: left; */
+        /* width: 350px; */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;    
       }
       .nutrition-facts__title {
         font-weight: bold;
@@ -142,82 +132,18 @@
       .nutrition-facts__header {
         border-bottom: 10px solid black;
         padding: 0 0 0.25rem 0;
-        margin: 0 0 0.5rem 0;
-        p {
-          margin: 0;
-        }
       }
-      .nutrition-facts__table {
+      .nutrition-facts__table, .nutrition-facts__table--small, .nutrition-facts__table--grid {
         width: 100%;
-        thead tr {
-          th,
-          td {
-            border: 0;
-          }
-        }
-        th,
-        td {
-          font-weight: normal;
-          text-align: left;
-          padding: 0.25rem 0;
-          border-top: 1px solid black;
-          white-space: nowrap;
-        }
-        td {
-          &:last-child {
-            text-align: right;
-          }
-        }
-        .blank-cell {
-          width: 1rem;
-          border-top: 0;
-        }
-        .thick-row {
-          th,
-          td {
-            border-top-width: 5px;
-          }
-        }
       }
-      .nutrition-facts__table--small {
-        @extend .nutrition-facts__table;
-        border-bottom: 1px; 
-        border-style: solid;
-        border-color: #999;
-        margin: 0 0 0.5rem 0;
-        thead {
-          tr {
-            border-bottom: 1px;
-            border-style: solid;
-            border-color: black;
-          }
-        }
-        td {
-          &:last-child {
-            text-align: left;
-          }
-        }
-        th,
-        td {
-          border: 0;
-          padding: 0;
-        }
+      .nutrition-facts__table tr{
+        /* border-bottom: #000; */
+        border-bottom: 1px solid black;
       }
-      .nutrition-facts__table--grid {
-        @extend .nutrition-facts__table;
-        margin: 0 0 0.5rem 0;
-        td {
-          &:last-child {
-            text-align: left;
-            &::before {
-              content: "•";
-              font-weight: bold;
-              margin: 0 0.25rem 0 0;
-            }
-          }
-        }
+      .nutrition-facts__table td:last-child{
+        text-align: right;
       }
-      
+
       .text-center {
         text-align: center;
       }
@@ -322,10 +248,11 @@
         </div>
       </div>
     </header>
+    
     <div class="grid-container">
       <div class="dropdown">
         <div class="popup" onclick="error_balloon()">
-          <span class="popuptext" href="#popup1" id="myPopup">Supplement Already Added</span>
+          <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
         </div>
         <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
         <div id="myDropdown" class="dropdown-content">
@@ -333,13 +260,13 @@
       </div>
       <div class="supplements" id="supplement_list"></div>
       <div class="nutrition_label">
-        <section class="nutrition-facts">
+        <section class="nutrition-facts" id="nutrition_list">
           <header class="nutrition-facts__header">
             <h1 class="nutrition-facts__title">Nutrition Facts</h1>
             <h6>Serving Size: 1 scoop (10g)</h6>
             <h6>Serving Per Container: 30</h6>
           </header>
-          <table class="nutrition-facts__table">
+          <table class="nutrition-facts__table" id="nutrition_table">
             <thead>
               <tr>
                 <th colspan="2">
@@ -348,143 +275,7 @@
                 <td><h6>% Daily Value*</h6></td>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th colspan="2">
-                  <h4><b>Calories: </b>10</h4>
-                </th>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>Total Carbohydrates: </b>
-                  40mg
-                </th>
-                <td>
-                  <b>2%</b>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>Sodium</b>
-                  40mg
-                </th>
-                <td>
-                  <b>2%</b>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                  Dietary Fiber
-                  1g
-                </th>
-                <td>
-                  <b>4%</b>
-                </td>
-              </tr>
-              <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                  Sugars
-                  14g
-                </th>
-                <td>
-                </td>
-              </tr>
-              <tr class="thick-end">
-                <th colspan="2">
-                  <b>Protein</b>
-                  3g
-                </th>
-                <td>
-                </td>
-              </tr>
-            </tbody>
           </table>
-          <table class="nutrition-facts__table--grid">
-            <tbody>
-              <tr>
-                <td colspan="2">
-                  Vitamin A
-                  10%
-                </td>
-                <td>
-                  Vitamin C
-                  0%
-                </td>
-              </tr>
-              <tr class="thin-end">
-                <td colspan="2">
-                  Calcium
-                  10%
-                </td>
-                <td>
-                  Iron
-                  6%
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
-          <table class="nutrition-facts__table--small small-info">
-            <thead>
-              <tr>
-                <td colspan="2"></td>
-                <th>Calories:</th>
-                <th>2,000</th>
-                <th>2,500</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th colspan="2">Total Fat</th>
-                <td>Less than</td>
-                <td>65g</td>
-                <td>80g</td>
-              </tr>
-              <tr>
-                <td class="blank-cell"></td>
-                <th>Saturated Fat</th>
-                <td>Less than</td>
-                <td>20g</td>
-                <td>25g</td>
-              </tr>
-              <tr>
-                <th colspan="2">Cholesterol</th>
-                <td>Less than</td>
-                <td>300mg</td>
-                <td>300 mg</td>
-              </tr>
-              <tr>
-                <th colspan="2">Sodium</th>
-                <td>Less than</td>
-                <td>2,400mg</td>
-                <td>2,400mg</td>
-              </tr>
-              <tr>
-                <th colspan="3">Total Carbohydrate</th>
-                <td>300g</td>
-                <td>375g</td>
-              </tr>
-              <tr>
-                <td class="blank-cell"></td>
-                <th colspan="2">Dietary Fiber</th>
-                <td>25g</td>
-                <td>30g</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="small-info">
-            Calories per gram:</p>
-          <p class="small-info text-center">
-            Fat 9
-            &bull;
-            Carbohydrate 4
-            &bull;
-            Protein 4</p>
         </section>
       </div>
     </div>
@@ -508,15 +299,15 @@
     ********************************* */
 
     const supplement_data = [
-      {name: 'betaalanine', propername: 'Beta Alanine', max: 4, unit: 'g', step: 0.1},
-      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1},
-      {name: 'creatine', propername: 'Creatine', max: 25, unit: 'g', step: 0.1},
-      {name: 'lcitrulline', propername: 'L-Citrulline', max: 10, unit: 'g', step: 0.1},
-      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1},
-      {name: 'theanine', propername: 'Theanine', max: 100, unit: 'mg', step: 1},
-      {name: 'niacin', propername: 'Niacin', max: 30, unit: 'mg', step: 0.1},
-      {name: 'taurine', propername: 'Taurine', max: 2, unit: 'g', step: 0.1},
-      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1}
+      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1, dv: '†'},
+      {name: 'betaalanine', propername: 'Beta Alanine', max: 5, unit: 'g', step: 0.1, dv: 1.2},
+      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1.0, dv: 200},
+      {name: 'creatine', propername: 'Creatine', max: 5, unit: 'g', step: 0.1, dv: '†'},
+      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1, dv: '†'},
+      {name: 'lcitrulline', propername: 'L-Citrulline', max: 5, unit: 'g', step: 0.1, dv: '†'},
+      {name: 'niacin', propername: 'Niacin', max: 500, unit: 'mg', step: 1, dv: 20},
+      {name: 'taurine', propername: 'Taurine', max: 800, unit: 'mg', step: 1, dv: '†'},
+      {name: 'theanine', propername: 'Theanine', max: 500, unit: 'mg', step: 1.0, dv: '†'}
     ];
 
     function button_showhide_toggle() {
@@ -527,17 +318,18 @@
       var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
       var i;
       for (i=0; i<=(supplement_data.length-1); i++) {
-        x = x + "<a onclick=add_fields('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
+        x = x + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
       }
       document.getElementById("myDropdown").innerHTML = x;
     }
-
-    function add_fields(name) {
+    
+    function add_supplement(name) {
 
       // Get supplement list
-      var objTo = document.getElementById('supplement_list');
+      var supplementList = document.getElementById('supplement_list');
+      var nutritionList = document.getElementById('nutrition_list');
 
-      var length = objTo.children.length;
+      var length = supplementList.children.length;
       var i;
 
       var slider_id = "slide_";
@@ -554,7 +346,7 @@
       for (i=0; i<length; i++){
 
         // if the name clicked is the same as child i, then we do not add it
-        if (name==objTo.children[i].localName){
+        if (name==supplementList.children[i].localName){
           // if name is on list we do not add it to the list
           do_we_add = 0; 
           // console.log(do_we_add);
@@ -578,7 +370,10 @@
         // Elements & Objects
         var slidecontainer = document.createElement(supplement.name);
         supplement.slider_id = slider_id;
-        slidecontainer.innerHTML = '<h4>'+supplement.propername+'</h4>';
+        slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
+
+        var supplementcontainer = document.createElement(supplement.name);
+        // supplementcontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
 
         var input = document.createElement("input");
         input.class = "slider";
@@ -588,30 +383,56 @@
         input.step = supplement.step;
         input.value = 0;
         input.id = slider_id;
+        
+        // decimal place
+        var fixed = 1;
+        if (input.step == 1){
+          fixed = 0;
+        }
 
         var output = document.createElement("output");
         var output_id = "output_";
         output_id = output_id.concat(supplement.name);
         output.id = output_id;
+        output.innerHTML = '<span style="color:white">Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
 
         // Append to container
         slidecontainer.appendChild(input);
         slidecontainer.appendChild(output);
-        objTo.appendChild(slidecontainer, slider_id);
+        supplementList.appendChild(slidecontainer, slider_id);
 
         // Update value
         supplement.slider_value = document.getElementById(supplement.slider_id);
         output.innerhtml = supplement.slider_value.value;
+        supplement.qty = 0;
         supplement.slider_value.oninput = function() {
-          output.innerHTML = '<span style="font-weight:bold;color:red">Amount: ' + this.value + ' ' + supplement.unit + '</span>';
           supplement.qty = this.value;
+          output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(this.value).toFixed(fixed)  + '</span> ' + supplement.unit + '</span>';
+          var cell1 = document.getElementById(supplement.name);
+          cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+
+          var cell3_id = "dv_";
+          cell3_id = cell3_id.concat(supplement.name);
+          var cell3 = document.getElementById(cell3_id);
+
+          if (isNaN(supplement.dv)){
+            cell3.innerHTML = '†';
+          }
+          else{
+            cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
+          }
+
           // console.log(supplement);
         }
+        console.log(nutritionList);
+
+        // Update nutrition label
+        add_supplement_label(supplement);
       }
     }
 
     function error_balloon() {
-      var popup = document.getElementById("myPopup");
+      var popup = document.getElementById("errorPopup_01");
       popup.classList.toggle("show");
     }
 
@@ -630,7 +451,25 @@
         }
       }
     }
-        
+    
+    var i = 0;
+    
+    function add_supplement_label(supplement) {
+      var table = document.getElementById("nutrition_table");
+      var row = table.insertRow(i+1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+      cell1.id = supplement.name;
+      // cell2.innerHTML = "NEW CELL2";
+      // cell3.innerHTML = "0 %";
+      var cell3_id = "dv_";
+      cell3_id = cell3_id.concat(supplement.name);
+      cell3.id = cell3_id;
+      i++;
+    }
+
     // window.onclick = function(event) {
     //   if (!event.target.matches('.dropbtn')) {
     //     var dropdowns = document.getElementsByClassName("dropdown-content");
