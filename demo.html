@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html">
+<html>
   
   <head>
     <meta charset="utf-8">
@@ -260,12 +260,14 @@
       </div>
       <div class="supplements" id="supplement_list"></div>
       <div class="nutrition_label">
-        <section class="nutrition-facts" id="nutrition_list">
+        <!-- <section class="nutrition-facts"></section> -->
           <header class="nutrition-facts__header">
             <h1 class="nutrition-facts__title">Nutrition Facts</h1>
-            <h6>Serving Size: 1 scoop (10g)</h6>
+            <h6 id="serving_size">Serving Size: 1 scoop (0g)</h6>
             <h6>Serving Per Container: 30</h6>
           </header>
+        <!-- </section> -->
+        <section class="nutrition-facts" id="nutrition_list"></section>
           <table class="nutrition-facts__table" id="nutrition_table">
             <thead>
               <tr>
@@ -299,16 +301,20 @@
     ********************************* */
 
     const supplement_data = [
-      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1, dv: '†'},
-      {name: 'betaalanine', propername: 'Beta Alanine', max: 5, unit: 'g', step: 0.1, dv: 1.2},
-      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1.0, dv: 200},
-      {name: 'creatine', propername: 'Creatine', max: 5, unit: 'g', step: 0.1, dv: '†'},
-      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1, dv: '†'},
-      {name: 'lcitrulline', propername: 'L-Citrulline', max: 5, unit: 'g', step: 0.1, dv: '†'},
-      {name: 'niacin', propername: 'Niacin', max: 500, unit: 'mg', step: 1, dv: 20},
-      {name: 'taurine', propername: 'Taurine', max: 800, unit: 'mg', step: 1, dv: '†'},
-      {name: 'theanine', propername: 'Theanine', max: 500, unit: 'mg', step: 1.0, dv: '†'}
+      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1, dv: '†', qty: 0},
+      {name: 'betaalanine', propername: 'Beta Alanine', max: 5, unit: 'g', step: 0.1, dv: 1.2, qty: 0},
+      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1.0, dv: 200, qty: 0},
+      {name: 'creatine', propername: 'Creatine', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
+      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1, dv: '†', qty: 0},
+      {name: 'lcitrulline', propername: 'L-Citrulline', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
+      {name: 'niacin', propername: 'Niacin', max: 500, unit: 'mg', step: 1, dv: 20, qty: 0},
+      {name: 'taurine', propername: 'Taurine', max: 800, unit: 'mg', step: 1, dv: '†', qty: 0},
+      {name: 'theanine', propername: 'Theanine', max: 500, unit: 'mg', step: 1.0, dv: '†', qty: 0}
     ];
+
+    var serving_size_amt = 0;
+    var index = 0;
+    var i = 0;
 
     function button_showhide_toggle() {
       // Toggle showing/hiding list
@@ -406,13 +412,21 @@
         output.innerhtml = supplement.slider_value.value;
         supplement.qty = 0;
         supplement.slider_value.oninput = function() {
+          
+          // Update supplement data
           supplement.qty = this.value;
+
+          // Update serving size amount on nutrition label
+          sum_supplements(supplement);
+          // var serving_size = document.getElementById("serving_size");
+
           output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(this.value).toFixed(fixed)  + '</span> ' + supplement.unit + '</span>';
           var cell1 = document.getElementById(supplement.name);
           cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
 
           var cell3_id = "dv_";
           cell3_id = cell3_id.concat(supplement.name);
+
           var cell3 = document.getElementById(cell3_id);
 
           if (isNaN(supplement.dv)){
@@ -424,8 +438,8 @@
 
           // console.log(supplement);
         }
-        console.log(nutritionList);
-
+        // console.log(nutritionList);
+        i++;
         // Update nutrition label
         add_supplement_label(supplement);
       }
@@ -451,12 +465,35 @@
         }
       }
     }
+    // var i = 0;
+
+    function sum_supplements(supplement){
+      var serving_size = document.getElementById("serving_size");
+      // var supplementList = document.getElementById('supplement_data');
+      // console.log(supplement_data[0].qty);
+      var i = 0;
+      var serving_size_amt = 0;
+      for (i=0;i<supplement_data.length;i++){
+        // supplement = document.getElementById("supplementList.children[i]");
+        console.log(typeof(serving_size_amt));
+
+        if (supplement_data[i].unit == "mg"){
+          // console.log(typeof(serving_size_amt));
+          serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty/1000);
+        }
+        else{
+          serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty);
+        }
+      }
+      
+      serving_size.innerHTML ='<h6>Serving Size: 1 scoop (' + parseFloat(serving_size_amt).toFixed(3) + ' g)</h6>';
+    }
     
-    var i = 0;
-    
+    // var i = 0;
+
     function add_supplement_label(supplement) {
       var table = document.getElementById("nutrition_table");
-      var row = table.insertRow(i+1);
+      var row = table.insertRow(index+1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
@@ -467,7 +504,7 @@
       var cell3_id = "dv_";
       cell3_id = cell3_id.concat(supplement.name);
       cell3.id = cell3_id;
-      i++;
+      // i++;
     }
 
     // window.onclick = function(event) {
