@@ -1,521 +1,263 @@
-<!DOCTYPE html>
+---
+layout: page
+title: BDE Preworkout
+permalink: /demo
+---
 
-<html>
-  
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Demo</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/owl.carousel.css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/css/bde.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/ionicons.min.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/responsive.css" />
-    <link rel="stylesheet" href="/css/syntax.css" />
-
-    <!-- Js -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/min/waypoints.min.js"></script>
-    <script src="/js/jquery.counterup.js"></script>
-
-
-    <script src="/js/main.js"></script>
-
-    <!--
-    /*
-     * BDE Layout
-     * Ported to Jekyll by Alexander Hay
-     * https://github.com/alexanderhay2020
-     *
-     */
-    -->
-  </head>
-  <body>
-    <style>
-      #myInput {
-        box-sizing: border-box;
-        background-image: url('../img/searchicon.png');
-        background-position: 14px 12px;
-        background-repeat: no-repeat;
-        font-size: 16px;
-        padding: 14px 20px 12px 45px;
-        border: none;
-        border-bottom: 1px solid #ddd;
-      }
-      #myInput:focus {
-        outline: 3px solid #ddd;
-      }
-      .dropbtn {
-        background-color: #cc4125ff;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-      }
-      .dropbtn:hover,
-      .dropbtn:focus {
-        background-color: #aa4125ff;
-      }
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f6f6f6;
-        min-width: 230px;
-        overflow: auto;
-        border: 1px solid #ddd;
-        color: black;
-        z-index: 1;
-      }
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-      }
-      .dropdown a:hover {
-        background-color: #ddd;
-      }
-      .dropdown .show {
-        display: block;
-      }
-
-      .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 0.5fr 1.5fr;
-        grid-template-rows: 0.5fr 2.5fr 0.5fr;
-        gap: 1px 1px;
-        grid-template-areas: "nutrition_label dropdown supplements""nutrition_label . supplements";
-      }
-      .nutrition_label {
-        grid-area: nutrition_label;
-      }
-      .supplements {
-        grid-area: supplements;
-        width: 50%
-      }
-      .dropdown {
-        grid-area: dropdown;
-      }
-
-      .nutrition-facts {
-        border: 1px solid black;
-        /* margin: 50px; */
-        /* float: left; */
-        /* width: 350px; */
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;    
-      }
-      .nutrition-facts__title {
-        font-weight: bold;
-        font-size: 2rem;
-        margin: 0 0 0.25rem 0;
-      }
-      .nutrition-facts__header {
-        border-bottom: 10px solid black;
-        padding: 0 0 0.25rem 0;
-      }
-      .nutrition-facts__table, .nutrition-facts__table--small, .nutrition-facts__table--grid {
-        width: 100%;
-      }
-      .nutrition-facts__table tr{
-        /* border-bottom: #000; */
-        border-bottom: 1px solid black;
-      }
-      .nutrition-facts__table td:last-child{
-        text-align: right;
-      }
-
-      .text-center {
-        text-align: center;
-      }
-      .text-right {
-        text-align: right;
-      }
-      .thick-end {
-        border-bottom: 10px solid black;
-      }
-      .thin-end {
-        border-bottom: 1px solid black;
-      }
-
-      .popup {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      .popup .popuptext {
-        /* The actual popup */
-
-        visibility: hidden;
-        width: 160px;
-        background-color: #fff;
-        border-style: solid;
-        border-color: red;
-        color: #000;
-        text-align: center;
-        border-radius: 6px;
-        padding: 8px 0;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -80px;
-      }
-      .popup .show {
-        /* Toggle this class - hide and show the popup */
-        visibility: visible;
-      }
-
-      .slidecontainer {
-        width: 50%;
-      }
-      .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 5px;
-        border-radius: 5px;
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-      }
-      .slider:hover {
-        opacity: 1;
-      }
-      .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 100%;
-      }
-    </style>
-
-    <header>
-      <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <!-- header Nav Start -->
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">
-                  <img src="/img/logo_sm.png" alt="Logo">
-                </a>
-              </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/demo">Demo</a></li>
-                    <!-- <li><a href="/blog">Blog</a></li> -->
-                    <!-- <li><a href="#">Service</a></li> -->
-                    <li><a href="/contact">Contact</a></li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-            </nav>
-          </div>
-        </div>
-      </div>
+<div class="grid-container">
+  <div class="dropdown">
+    <div class="popup" onclick="error_balloon()">
+      <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
+    </div>
+    <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
+    <div id="myDropdown" class="dropdown-content">
+    </div>
+  </div>
+  <div class="supplements" id="supplement_list"></div>
+  <div class="nutrition_label">
+    <header class="nutrition-facts__header">
+      <h1 class="nutrition-facts__title">Nutrition Facts</h1>
+      <h6 id="serving_size">Serving Size: 1 scoop (0 g)</h6>
+      <h6>Serving Per Container: 30</h6>
     </header>
+    <section class="nutrition-facts" id="nutrition_list"></section>
+      <table class="nutrition-facts__table" id="nutrition_table">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h6>Amount Per Serving</h6>
+            </th>
+            <td><h6>% Daily Value*</h6></td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+  </div>
+</div>
+
+<script>
+  /* *********************************
+              JAVASCRIPT
+  ********************************* */
+
+  const supplement_data = [
+    {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1, dv: '†', qty: 0},
+    {name: 'betaalanine', propername: 'Beta Alanine', max: 5, unit: 'g', step: 0.1, dv: 1.2, qty: 0},
+    {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1.0, dv: 200, qty: 0},
+    {name: 'creatine', propername: 'Creatine', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
+    {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1, dv: '†', qty: 0},
+    {name: 'lcitrulline', propername: 'L-Citrulline', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
+    {name: 'niacin', propername: 'Niacin', max: 500, unit: 'mg', step: 1, dv: 20, qty: 0},
+    {name: 'taurine', propername: 'Taurine', max: 800, unit: 'mg', step: 1, dv: '†', qty: 0},
+    {name: 'theanine', propername: 'Theanine', max: 500, unit: 'mg', step: 1.0, dv: '†', qty: 0}
+  ];
+
+  var serving_size_amt = 0;
+  var index = 0;
+  var i = 0;
+
+  function button_showhide_toggle() {
+    // Toggle showing/hiding list
+    document.getElementById("myDropdown").classList.toggle("show");
     
-    <div class="grid-container">
-      <div class="dropdown">
-        <div class="popup" onclick="error_balloon()">
-          <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
-        </div>
-        <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
-        <div id="myDropdown" class="dropdown-content">
-        </div>
-      </div>
-      <div class="supplements" id="supplement_list"></div>
-      <div class="nutrition_label">
-        <header class="nutrition-facts__header">
-          <h1 class="nutrition-facts__title">Nutrition Facts</h1>
-          <h6 id="serving_size">Serving Size: 1 scoop (0 g)</h6>
-          <h6>Serving Per Container: 30</h6>
-        </header>
-        <section class="nutrition-facts" id="nutrition_list"></section>
-          <table class="nutrition-facts__table" id="nutrition_table">
-            <thead>
-              <tr>
-                <th colspan="2">
-                  <h6>Amount Per Serving</h6>
-                </th>
-                <td><h6>% Daily Value*</h6></td>
-              </tr>
-            </thead>
-          </table>
-        </section>
-      </div>
-    </div>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          Designed by <a href="https://github.com/alexanderhay2020/">H.A.</a>
-          <br>
-          {% if site.last_updated %}
-              Last updated: {{ site.last_updated }}
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </footer>
-  </body>
-  <script>
-    /* *********************************
-                JAVASCRIPT
-    ********************************* */
-
-    const supplement_data = [
-      {name: 'bcaa', propername: 'BCAA', max: 20, unit: 'g', step: 0.1, dv: '†', qty: 0},
-      {name: 'betaalanine', propername: 'Beta Alanine', max: 5, unit: 'g', step: 0.1, dv: 1.2, qty: 0},
-      {name: 'caffeine', propername: 'Caffeine', max: 300, unit: 'mg', step: 1.0, dv: 200, qty: 0},
-      {name: 'creatine', propername: 'Creatine', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
-      {name: 'larganine', propername: 'L-Arganine', max: 2, unit: 'g', step: 0.1, dv: '†', qty: 0},
-      {name: 'lcitrulline', propername: 'L-Citrulline', max: 5, unit: 'g', step: 0.1, dv: '†', qty: 0},
-      {name: 'niacin', propername: 'Niacin', max: 500, unit: 'mg', step: 1, dv: 20, qty: 0},
-      {name: 'taurine', propername: 'Taurine', max: 800, unit: 'mg', step: 1, dv: '†', qty: 0},
-      {name: 'theanine', propername: 'Theanine', max: 500, unit: 'mg', step: 1.0, dv: '†', qty: 0}
-    ];
-
-    var serving_size_amt = 0;
-    var index = 0;
-    var i = 0;
-
-    function button_showhide_toggle() {
-      // Toggle showing/hiding list
-      document.getElementById("myDropdown").classList.toggle("show");
-      
-      // Populate list
-      var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
-      var i;
-      for (i=0; i<=(supplement_data.length-1); i++) {
-        x = x + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
-      }
-      document.getElementById("myDropdown").innerHTML = x;
+    // Populate list
+    var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
+    var i;
+    for (i=0; i<=(supplement_data.length-1); i++) {
+      x = x + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
     }
-    
-    function add_supplement(name) {
+    document.getElementById("myDropdown").innerHTML = x;
+  }
+  
+  function add_supplement(name) {
 
-      // Get supplement list
-      var supplementList = document.getElementById('supplement_list');
-      var nutritionList = document.getElementById('nutrition_list');
+    // Get supplement list
+    var supplementList = document.getElementById('supplement_list');
+    var nutritionList = document.getElementById('nutrition_list');
 
-      var length = supplementList.children.length;
-      var i;
+    var length = supplementList.children.length;
+    var i;
 
-      var slider_id = "slide_";
-      slider_id = slider_id.concat(name);
+    var slider_id = "slide_";
+    slider_id = slider_id.concat(name);
 
-      // 1 for yes, 0 for no; initialize yes to enter first supplement
-      if (length==0){
-        var do_we_add = 1; 
+    // 1 for yes, 0 for no; initialize yes to enter first supplement
+    if (length==0){
+      var do_we_add = 1; 
+    }
+    else{
+      var do_we_add = 0;
+    }
+
+    for (i=0; i<length; i++){
+
+      // if the name clicked is the same as child i, then we do not add it
+      if (name==supplementList.children[i].localName){
+        // if name is on list we do not add it to the list
+        do_we_add = 0; 
+        // console.log(do_we_add);
+        error_balloon();
+        break;
       }
       else{
-        var do_we_add = 0;
-      }
-
-      for (i=0; i<length; i++){
-
-        // if the name clicked is the same as child i, then we do not add it
-        if (name==supplementList.children[i].localName){
-          // if name is on list we do not add it to the list
-          do_we_add = 0; 
-          // console.log(do_we_add);
-          error_balloon();
-          break;
-        }
-        else{
-          // if name is not on list we add it to the list
-          do_we_add = 1;
-          // console.log(do_we_add);
-        }
-      }
-      if (do_we_add==1){
-
-        // Find supplement info from data table
-        function getSupp(supp) { 
-          return supp.name === name;
-        }
-        var supplement = supplement_data.find(getSupp);
-
-        // Elements & Objects
-        var slidecontainer = document.createElement(supplement.name);
-        supplement.slider_id = slider_id;
-        slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
-
-        var supplementcontainer = document.createElement(supplement.name);
-        // supplementcontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
-
-        var input = document.createElement("input");
-        input.class = "slider";
-        input.type = "range";
-        input.min = 0;
-        input.max = supplement.max;
-        input.step = supplement.step;
-        input.value = 0;
-        input.id = slider_id;
-        
-        // decimal place
-        var fixed = 1;
-        if (input.step == 1){
-          fixed = 0;
-        }
-
-        var output = document.createElement("output");
-        var output_id = "output_";
-        output_id = output_id.concat(supplement.name);
-        output.id = output_id;
-        output.innerHTML = '<span style="color:white">Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
-
-        // Append to container
-        slidecontainer.appendChild(input);
-        slidecontainer.appendChild(output);
-        supplementList.appendChild(slidecontainer, slider_id);
-
-        // Update value
-        supplement.slider_value = document.getElementById(supplement.slider_id);
-        output.innerhtml = supplement.slider_value.value;
-        supplement.qty = 0;
-        supplement.slider_value.oninput = function() {
-          
-          // Update supplement data
-          supplement.qty = this.value;
-
-          // Update serving size amount on nutrition label
-          sum_supplements(supplement);
-          // var serving_size = document.getElementById("serving_size");
-
-          output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(this.value).toFixed(fixed)  + '</span> ' + supplement.unit + '</span>';
-          var cell1 = document.getElementById(supplement.name);
-          cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
-
-          var cell3_id = "dv_";
-          cell3_id = cell3_id.concat(supplement.name);
-
-          var cell3 = document.getElementById(cell3_id);
-
-          if (isNaN(supplement.dv)){
-            cell3.innerHTML = '†';
-          }
-          else{
-            cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
-          }
-
-          // console.log(supplement);
-        }
-        // console.log(nutritionList);
-        i++;
-        // Update nutrition label
-        add_supplement_label(supplement);
+        // if name is not on list we add it to the list
+        do_we_add = 1;
+        // console.log(do_we_add);
       }
     }
+    if (do_we_add==1){
 
-    function error_balloon() {
-      var popup = document.getElementById("errorPopup_01");
-      popup.classList.toggle("show");
-    }
-
-    function filterFunction() {
-      var input, filter, ul, li, a, i;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      div = document.getElementById("myDropdown");
-      a = div.getElementsByTagName("a");
-      for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          a[i].style.display = "";
-        } else {
-          a[i].style.display = "none";
-        }
+      // Find supplement info from data table
+      function getSupp(supp) { 
+        return supp.name === name;
       }
-    }
-    // var i = 0;
+      var supplement = supplement_data.find(getSupp);
 
-    function sum_supplements(supplement){
-      var serving_size = document.getElementById("serving_size");
-      // var supplementList = document.getElementById('supplement_data');
-      // console.log(supplement_data[0].qty);
-      var i = 0;
-      var serving_size_amt = 0;
-      for (i=0;i<supplement_data.length;i++){
-        // supplement = document.getElementById("supplementList.children[i]");
-        console.log(typeof(serving_size_amt));
+      // Elements & Objects
+      var slidecontainer = document.createElement(supplement.name);
+      supplement.slider_id = slider_id;
+      slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
 
-        if (supplement_data[i].unit == "mg"){
-          // console.log(typeof(serving_size_amt));
-          serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty/1000);
-        }
-        else{
-          serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty);
-        }
-      }
+      var supplementcontainer = document.createElement(supplement.name);
+      // supplementcontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
+
+      var input = document.createElement("input");
+      input.class = "slider";
+      input.type = "range";
+      input.min = 0;
+      input.max = supplement.max;
+      input.step = supplement.step;
+      input.value = 0;
+      input.id = slider_id;
       
-      serving_size.innerHTML ='<h6>Serving Size: 1 scoop (' + parseFloat(serving_size_amt).toFixed(1) + ' g)</h6>';
+      // decimal place
+      var fixed = 1;
+      if (input.step == 1){
+        fixed = 0;
+      }
+
+      var output = document.createElement("output");
+      var output_id = "output_";
+      output_id = output_id.concat(supplement.name);
+      output.id = output_id;
+      output.innerHTML = '<span style="color:white">Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
+
+      // Append to container
+      slidecontainer.appendChild(input);
+      slidecontainer.appendChild(output);
+      supplementList.appendChild(slidecontainer, slider_id);
+
+      // Update value
+      supplement.slider_value = document.getElementById(supplement.slider_id);
+      output.innerhtml = supplement.slider_value.value;
+      supplement.qty = 0;
+      supplement.slider_value.oninput = function() {
+        
+        // Update supplement data
+        supplement.qty = this.value;
+
+        // Update serving size amount on nutrition label
+        sum_supplements(supplement);
+        // var serving_size = document.getElementById("serving_size");
+
+        output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(this.value).toFixed(fixed)  + '</span> ' + supplement.unit + '</span>';
+        var cell1 = document.getElementById(supplement.name);
+        cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+
+        var cell3_id = "dv_";
+        cell3_id = cell3_id.concat(supplement.name);
+
+        var cell3 = document.getElementById(cell3_id);
+
+        if (isNaN(supplement.dv)){
+          cell3.innerHTML = '†';
+        }
+        else{
+          cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
+        }
+
+        // console.log(supplement);
+      }
+      // console.log(nutritionList);
+      i++;
+      // Update nutrition label
+      add_supplement_label(supplement);
+    }
+  }
+
+  function error_balloon() {
+    var popup = document.getElementById("errorPopup_01");
+    popup.classList.toggle("show");
+  }
+
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+  // var i = 0;
+
+  function sum_supplements(supplement){
+    var serving_size = document.getElementById("serving_size");
+    // var supplementList = document.getElementById('supplement_data');
+    // console.log(supplement_data[0].qty);
+    var i = 0;
+    var serving_size_amt = 0;
+    for (i=0;i<supplement_data.length;i++){
+      // supplement = document.getElementById("supplementList.children[i]");
+      console.log(typeof(serving_size_amt));
+
+      if (supplement_data[i].unit == "mg"){
+        // console.log(typeof(serving_size_amt));
+        serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty/1000);
+      }
+      else{
+        serving_size_amt = Number(serving_size_amt) + Number(supplement_data[i].qty);
+      }
     }
     
-    // var i = 0;
+    serving_size.innerHTML ='<h6>Serving Size: 1 scoop (' + parseFloat(serving_size_amt).toFixed(1) + ' g)</h6>';
+  }
+  
+  // var i = 0;
 
-    function add_supplement_label(supplement) {
-      var table = document.getElementById("nutrition_table");
-      var row = table.insertRow(index+1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
-      cell1.id = supplement.name;
-      // cell2.innerHTML = "NEW CELL2";
-      // cell3.innerHTML = "0 %";
-      var cell3_id = "dv_";
-      cell3_id = cell3_id.concat(supplement.name);
-      cell3.id = cell3_id;
-      // i++;
-    }
+  function add_supplement_label(supplement) {
+    var table = document.getElementById("nutrition_table");
+    var row = table.insertRow(index+1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+    cell1.id = supplement.name;
+    // cell2.innerHTML = "NEW CELL2";
+    // cell3.innerHTML = "0 %";
+    var cell3_id = "dv_";
+    cell3_id = cell3_id.concat(supplement.name);
+    cell3.id = cell3_id;
+    // i++;
+  }
 
-    // window.onclick = function(event) {
-    //   if (!event.target.matches('.dropbtn')) {
-    //     var dropdowns = document.getElementsByClassName("dropdown-content");
-    //     var i;
-    //     for (i = 0; i < dropdowns.length; i++) {
-    //       var openDropdown = dropdowns[i];
-    //       if (openDropdown.classList.contains('show')) {
-    //         openDropdown.classList.remove('show');
-    //       }
-    //     }
-    //   }
-    // }
-  </script>
-</html>
+  // window.onclick = function(event) {
+  //   if (!event.target.matches('.dropbtn')) {
+  //     var dropdowns = document.getElementsByClassName("dropdown-content");
+  //     var i;
+  //     for (i = 0; i < dropdowns.length; i++) {
+  //       var openDropdown = dropdowns[i];
+  //       if (openDropdown.classList.contains('show')) {
+  //         openDropdown.classList.remove('show');
+  //       }
+  //     }
+  //   }
+  // }
+</script>
+
