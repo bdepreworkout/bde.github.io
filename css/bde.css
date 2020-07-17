@@ -407,7 +407,7 @@ footer .footer-manu ul li a:hover {
   display: block;
 }
 
-.grid-container {
+.section {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1.5fr;
   grid-template-rows: 0.5fr 2.5fr 0.5fr;
