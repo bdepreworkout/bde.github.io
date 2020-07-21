@@ -185,6 +185,7 @@ permalink: /demo
 
       delete_input.addEventListener('click', event => {
         event.preventDefault();
+        supplement.qty = 0;
         document.getElementById(supplement.name).remove();
         var cell2_id = "dv2_";
         cell2_id = cell2_id.concat(supplement.name);
@@ -193,6 +194,7 @@ permalink: /demo
         document.getElementById(cell2_id).remove();
         document.getElementById(cell3_id).remove();
         delete_input.parentElement.remove();
+        update_total_serving_size();
       });
 
       // Append to container
@@ -212,7 +214,7 @@ permalink: /demo
         // Update supplement data
         supplement.qty = this.value;
         // Update serving size amount on nutrition label
-        update_total_serving_size(supplement);
+        update_total_serving_size();
         // Update amount per serving
         update_amt(supplement, output);
       }
@@ -245,7 +247,8 @@ permalink: /demo
     }
   }
 
-  function update_total_serving_size(supplement){
+  function update_total_serving_size(){
+    console.log("update_total_serving_size() was called")
     var serving_size = document.getElementById("serving_size");
     var i = 0;
     var serving_size_amt = 0;
