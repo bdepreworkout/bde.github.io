@@ -129,7 +129,7 @@ permalink: /demo
       var slidecontainer = document.createElement(supplement.name);
       // console.log(slidecontainer);
       supplement.slider_id = slider_id;
-      slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
+      slidecontainer.innerHTML = '<h5 >'+supplement.propername+'</h5>';
 
       var supplementcontainer = document.createElement(supplement.name);
 
@@ -179,6 +179,7 @@ permalink: /demo
           slider_input.value = supplement.qty;
         }
         update_amt(supplement, output);
+        update_total_serving_size();
         add_ingredient();
       });
 
@@ -189,6 +190,7 @@ permalink: /demo
           slider_input.value = supplement.qty;
         }
         update_amt(supplement, output);
+        update_total_serving_size();
         add_ingredient();
       });
 
@@ -238,8 +240,10 @@ permalink: /demo
   function error_balloon() {
     var popup = document.getElementById("errorPopup_01");
     popup.classList.toggle("show");
-    if(popup.classList.contains("show")) // Check if the popup is shown
-     setTimeout(() => popup.classList.remove("show"), 1000) // If yes hide it after 1000 milliseconds
+    // Check if the popup is shown
+    if(popup.classList.contains("show"))
+      // If yes hide it after 1000 milliseconds
+      setTimeout(() => popup.classList.remove("show"), 1000)
   }
 
   function filterFunction() {
@@ -296,9 +300,9 @@ permalink: /demo
       output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(1)  + '</span> ' + supplement.unit + '</span>';
       cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty).toFixed(1) + ' ' + supplement.unit;
     }
+    
     var cell3_id = "dv_";
     cell3_id = cell3_id.concat(supplement.name);
-
     var cell3 = document.getElementById(cell3_id);
 
     if (isNaN(supplement.dv)){
@@ -317,6 +321,7 @@ permalink: /demo
         ingredient_list = ingredient_list + supplement_data[i].propername + ", ";
       }
     }
+    // Remove the last ", " of ingredient_list
     ingredient_list = ingredient_list.substr(0, ingredient_list.length-2);
     document.getElementById("ingredients").innerHTML = ingredient_list;
   }
