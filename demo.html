@@ -33,6 +33,11 @@ permalink: /demo
           </tr>
         </thead>
       </table>
+      <h6 id="ingredients">Ingredients: </h6>
+      <br>
+      <h6>* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.</h6>
+      <br>
+      <h6>† Percent Daily Value not determined.</h6>
     </section>
   </div>
 </div>
@@ -122,7 +127,7 @@ permalink: /demo
 
       // Elements & Objects
       var slidecontainer = document.createElement(supplement.name);
-      console.log(slidecontainer);
+      // console.log(slidecontainer);
       supplement.slider_id = slider_id;
       slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5>';
 
@@ -169,17 +174,19 @@ permalink: /demo
       
       minus_input.addEventListener('click', event => {
         event.preventDefault();
-        var currentValue = Number(supplement.qty) || 0;
-        supplement.qty = currentValue - 1;
-        slider_input.value = supplement.qty;
+        if (supplement.qty > 0) {
+          supplement.qty = (Number(supplement.qty) || 0) - Number(supplement.step);
+          slider_input.value = supplement.qty;
+        }
         update_amt(supplement, output);
       });
 
       plus_input.addEventListener('click', event => {
         event.preventDefault();
-        var currentValue = Number(supplement.qty) || 0;
-        supplement.qty = currentValue + 1;
-        slider_input.value = supplement.qty;
+        if (supplement.qty < supplement.max) {
+          supplement.qty = (Number(supplement.qty) || 0) + Number(supplement.step);
+          slider_input.value = supplement.qty;
+        }
         update_amt(supplement, output);
       });
 
@@ -248,7 +255,7 @@ permalink: /demo
   }
 
   function update_total_serving_size(){
-    console.log("update_total_serving_size() was called")
+    // console.log("update_total_serving_size() was called")
     var serving_size = document.getElementById("serving_size");
     var i = 0;
     var serving_size_amt = 0;
@@ -286,7 +293,7 @@ permalink: /demo
       }
     output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(fixed)  + '</span> ' + supplement.unit + '</span>';
     var cell1 = document.getElementById(supplement.name);
-    cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+    cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty).toFixed(fixed) + ' ' + supplement.unit;
     var cell3_id = "dv_";
     cell3_id = cell3_id.concat(supplement.name);
 
@@ -298,6 +305,10 @@ permalink: /demo
     else{
       cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
     }
+  }
+
+  function add_ingredient(){
+    
   }
   // window.onclick = function(event) {
   //   if (!event.target.matches('.dropbtn')) {
