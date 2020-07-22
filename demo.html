@@ -317,6 +317,7 @@ permalink: /demo
         ingredient_list = ingredient_list + supplement_data[i].propername + ", ";
       }
     }
+    ingredient_list = ingredient_list.substr(0, ingredient_list.length-2);
     document.getElementById("ingredients").innerHTML = ingredient_list;
   }
   // window.onclick = function(event) {
