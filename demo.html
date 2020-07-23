@@ -4,18 +4,46 @@ title: BDE Preworkout
 permalink: /demo
 ---
 <style>
-</style>
+  .output{
+    color: #e8e8e8;
+    display: inline;
+  }
 
-<div class="section">
-  <div class="dropdown">
-    <div class="popup" onclick="error_balloon()">
-      <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
+  .plus_minus_delete{
+    position: absolute
+    left: 100%;
+  }
+  
+</style>
+<div class="grid-container">
+  <div class="dropdown"></div>
+  <div class="buttons">
+    
+    <div class="supplement_button">
+      <div class="popup" onclick="error_balloon()">
+        <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
+      </div>
+      <button id="button_add_supplement" onclick="button_add_supplement_toggle()" class="dropbtn">Add Supplement</button>
+      <div id="supplement_dropdown" class="dropdown-content"></div>
     </div>
-    <button onclick="button_showhide_toggle()" class="dropbtn">Add Supplement</button>
-    <div id="myDropdown" class="dropdown-content">
+
+    <div class="nootropic_button">
+      <div class="popup" onclick="error_balloon()">
+        <span class="popuptext" href="#popup2" id="errorPopup_01">Nootropic Already Added</span>
+      </div>
+      <button id="button_add_nootropic" onclick="button_add_nootropic_toggle()" class="dropbtn">Add Nootropic</button>
+      <div id="nootropic_dropdown" class="dropdown-content"></div>
+    </div>
+
+    <div class="flavor_button">
+      <button class="dropbtn">Add Flavor</button>
+    </div>
+    <div class="checkout_button">
+      <button class="dropbtn">Checkout</button>
     </div>
   </div>
   <div class="supplements" id="supplement_list"></div>
+  <div class="information"></div>
   <div class="nutrition_label">
     <header class="nutrition-facts__header">
       <h1 class="nutrition-facts__title">Nutrition Facts</h1>
@@ -59,21 +87,42 @@ permalink: /demo
     {name: 'theanine', propername: 'Theanine', max: .5, unit: 'mg', step: 0.001, dv: '†', qty: 0}
   ];
 
+  const nootropic_data = [
+    {name: 'maca_root', propername: 'Maca Root'},
+    {name: 'zma', propername: 'ZMA'},
+    {name: 'ginkgo', propername: 'Ginkgo'},
+    {name: 'dhea', propername: 'T-Boost (DHEA)'},
+    {name: 'yohimbine', propername: 'Yohimbine'}
+  ];
+
   var serving_size_amt = 0;
   var index = 0;
   var i = 0;
 
-  function button_showhide_toggle() {
+  function button_add_supplement_toggle() {
     // Toggle showing/hiding list
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("supplement_dropdown").classList.toggle("show");
     
     // Populate list
-    var x ="<input type='text' placeholder='Search..' id='myInput' onkeyup='filterFunction()'>";
+    var x ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
     var i;
     for (i=0; i<=(supplement_data.length-1); i++) {
       x = x + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
     }
-    document.getElementById("myDropdown").innerHTML = x;
+    document.getElementById("supplement_dropdown").innerHTML = x;
+  }
+
+  function button_add_nootropic_toggle() {
+    // Toggle showing/hiding list
+    document.getElementById("nootropic_dropdown").classList.toggle("show");
+    
+    // Populate list
+    var x ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
+    var i;
+    for (i=0; i<=(nootropic_data.length-1); i++) {
+      x = x + "<a onclick=add_nootropic('" + nootropic_data[i].name + "')>" + nootropic_data[i].propername + "</a>";
+    }
+    document.getElementById("nootropic_dropdown").innerHTML = x;
   }
   
   function add_supplement(name) {
@@ -129,7 +178,9 @@ permalink: /demo
       var slidecontainer = document.createElement(supplement.name);
       // console.log(slidecontainer);
       supplement.slider_id = slider_id;
-      slidecontainer.innerHTML = '<h5 >'+supplement.propername+'</h5>';
+      slidecontainer.className = "tooltip";
+      slidecontainer.innerHTML = '<h5>'+supplement.propername+'</h5><h5 class="tooltiptext">fsdafds</h5>';
+
 
       var supplementcontainer = document.createElement(supplement.name);
 
@@ -152,25 +203,30 @@ permalink: /demo
       var output_id = "output_";
       output_id = output_id.concat(supplement.name);
       output.id = output_id;
-      output.innerHTML = '<span style="color:white">Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
+      // output.display = inline;
+      output.className = "output";
 
       var plus_input = document.createElement("input");
       plus_input.type = "button";
       plus_input.class = "plus_minus_delete";
       plus_input.id = plus;
       plus_input.value = "+";
+      plus_input.style="position:relative; left:55%";
 
       var minus_input = document.createElement("input");
       minus_input.type = "button";
       minus_input.class = "plus_minus_delete";
       minus_input.id = minus;
       minus_input.value = "-";
+      minus_input.style="position:relative; left:55%";
 
       var delete_input = document.createElement("input");
       delete_input.type = "button";
       delete_input.class = "plus_minus_delete";
       delete_input.id = delete_id;
       delete_input.value = "∅";
+      delete_input.style="position:relative; left:55%";
       
       minus_input.addEventListener('click', event => {
         event.preventDefault();
@@ -219,7 +275,7 @@ permalink: /demo
 
       // Slider stuff
       supplement.slider_value = document.getElementById(supplement.slider_id);
-      output.innerhtml = supplement.slider_value.value;
+      // output.innerhtml = supplement.slider_value.value;
       supplement.qty = 0;
       supplement.slider_value.oninput = function() {
 
@@ -248,9 +304,9 @@ permalink: /demo
 
   function filterFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
+    input = document.getElementById("search_input");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
+    div = document.getElementById("supplement_dropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
       txtValue = a[i].textContent || a[i].innerText;
@@ -293,11 +349,11 @@ permalink: /demo
     var cell1 = document.getElementById(supplement.name);
 
     if (supplement.unit == "mg"){
-      output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty*1000).toFixed(0)  + '</span> ' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty*1000).toFixed(0)  + '</span> ' + supplement.unit + '</span>';
       cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty*1000).toFixed(0) + ' ' + supplement.unit;
     }
     else{
-      output.innerHTML = '<span style="color:white">Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(1)  + '</span> ' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(1)  + '</span> ' + supplement.unit + '</span>';
       cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty).toFixed(1) + ' ' + supplement.unit;
     }
     
@@ -309,7 +365,12 @@ permalink: /demo
       cell3.innerHTML = '†';
     }
     else{
-      cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
+      if (supplement.unit == "mg"){
+        cell3.innerHTML = parseFloat((supplement.qty*1000/supplement.dv)*100 ).toFixed(0)+ ' %';
+      }
+      else{
+        cell3.innerHTML = parseFloat((supplement.qty/supplement.dv)*100 ).toFixed(0)+ ' %';
+      }
     }
   }
 
