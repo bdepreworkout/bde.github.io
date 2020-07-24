@@ -16,7 +16,8 @@ permalink: /demo
   
 </style>
 <div class="grid-container">
-  <div class="dropdown"></div>
+  <div class="dropdown-content" id="selection_space" style="display: none;"></div>
+
   <div class="buttons">
     
     <div class="supplement_button">
@@ -36,8 +37,11 @@ permalink: /demo
     </div>
 
     <div class="flavor_button">
-      <button class="dropbtn">Add Flavor</button>
+      <button id="button_add_flavor" onclick="button_add_flavor_toggle()" class="dropbtn">Add Flavor</button>
+      <div id="flavor_dropdown" class="dropdown-content"></div>
     </div>
+
+
     <div class="checkout_button">
       <button class="dropbtn">Checkout</button>
     </div>
@@ -95,34 +99,77 @@ permalink: /demo
     {name: 'yohimbine', propername: 'Yohimbine'}
   ];
 
+  const flavor_data = [
+    {name: 'fruit_punch', propername: 'Fruit Punch', fat: 0, sodium: 0, protein: 0, carbs: 1, max: 2, unit: 'g', ing: 'Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Sucralose, Malic Acid, Silica, FD&C Red Lake #40'},
+    {name: 'grape', propername: 'Grape', fat: 0, sodium: 0, protein: 0, carbs: 1, max: 2, unit: 'g', ing: 'Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Malic Acid, Sucralose, Silica, FD&C Red Lake #40, FD&C Blue Lake #1'},
+    {name: 'limeade', propername: 'Limeade', fat: 0, sodium: 0, protein: 0, carbs: 1, max: 2, unit: 'g', ing: 'Flavor Mix (Natural & Artificial Flavor, Citric Acid, Sucralose, Maltodextrin, Malic Acid, Silica, FD&C Yellow Lake #5, FD&C Blue Lake #1'},
+    {name: 'watermelon', propername: 'Watermelon', fat: 0, sodium: 0, protein: 0, carbs: 1, max: 2, unit: 'g', ing: 'Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Sucralose, Malic Acid, Silica, FD&C Red Lake #40'}
+  ]
   var serving_size_amt = 0;
   var index = 0;
   var i = 0;
 
   function button_add_supplement_toggle() {
     // Toggle showing/hiding list
-    document.getElementById("supplement_dropdown").classList.toggle("show");
-    
-    // Populate list
-    var x ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
-    var i;
-    for (i=0; i<=(supplement_data.length-1); i++) {
-      x = x + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
+    document.getElementById("selection_space").class="dropbtn";
+    var x = document.getElementById("selection_space");
+    x.style.position = "inherit";
+    if (x.index == 1){
+      x.style.display = "none";
+      x.index = 0;
     }
-    document.getElementById("supplement_dropdown").innerHTML = x;
+    else {
+      x.style.display = "block";
+      var y ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
+      var i;
+      for (i=0; i<=(supplement_data.length-1); i++) {
+        y = y + "<a onclick=add_supplement('" + supplement_data[i].name + "')>" + supplement_data[i].propername + "</a>";
+      }
+      document.getElementById("selection_space").innerHTML = y;
+      x.index = 1;
+    }
   }
 
   function button_add_nootropic_toggle() {
     // Toggle showing/hiding list
-    document.getElementById("nootropic_dropdown").classList.toggle("show");
-    
-    // Populate list
-    var x ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
-    var i;
-    for (i=0; i<=(nootropic_data.length-1); i++) {
-      x = x + "<a onclick=add_nootropic('" + nootropic_data[i].name + "')>" + nootropic_data[i].propername + "</a>";
+    document.getElementById("selection_space").class="dropbtn";
+    var x = document.getElementById("selection_space");
+    x.style.position = "inherit";
+    if (x.index == 2){
+      x.style.display = "none";
+      x.index = 0;
     }
-    document.getElementById("nootropic_dropdown").innerHTML = x;
+    else {
+      x.style.display = "block";
+      var y ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
+      var i;
+      for (i=0; i<=(nootropic_data.length-1); i++) {
+        y = y + "<a onclick=add_supplement('" + nootropic_data[i].name + "')>" + nootropic_data[i].propername + "</a>";
+      }
+      document.getElementById("selection_space").innerHTML = y;
+      x.index = 2;
+    }
+  }
+
+  function button_add_flavor_toggle(){
+    document.getElementById("selection_space").class="dropbtn";
+    var x = document.getElementById("selection_space");
+    x.style.position = "inherit";
+    if (x.index == 3){
+      x.style.display = "none";
+      x.index = 0;
+    }
+    else {
+      x.style.display = "block";
+      var y ="<input type='text' placeholder='Search..' id='search_input' onkeyup='filterFunction()'>";
+      var i;
+      for (i=0; i<=(flavor_data.length-1); i++) {
+        y = y + "<a onclick=add_supplement('" + flavor_data[i].name + "')>" + flavor_data[i].propername + "</a>";
+      }
+      document.getElementById("selection_space").innerHTML = y;
+      x.index = 3;
+    }
+
   }
   
   function add_supplement(name) {
