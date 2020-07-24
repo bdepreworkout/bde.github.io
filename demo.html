@@ -11,7 +11,7 @@ permalink: /demo
 
   .plus_minus_delete{
     position: absolute
-    left: 100%;
+    /* left: 70%; */
   }
   
 </style>
@@ -25,7 +25,7 @@ permalink: /demo
         <span class="popuptext" href="#popup1" id="errorPopup_01">Supplement Already Added</span>
       </div>
       <button id="button_add_supplement" onclick="button_add_supplement_toggle()" class="dropbtn">Add Supplement</button>
-      <div id="supplement_dropdown" class="dropdown-content"></div>
+      <!-- <div id="supplement_dropdown" class="dropdown-content"></div> -->
     </div>
 
     <div class="nootropic_button">
@@ -33,12 +33,12 @@ permalink: /demo
         <span class="popuptext" href="#popup2" id="errorPopup_01">Nootropic Already Added</span>
       </div>
       <button id="button_add_nootropic" onclick="button_add_nootropic_toggle()" class="dropbtn">Add Nootropic</button>
-      <div id="nootropic_dropdown" class="dropdown-content"></div>
+      <!-- <div id="nootropic_dropdown" class="dropdown-content"></div> -->
     </div>
 
     <div class="flavor_button">
       <button id="button_add_flavor" onclick="button_add_flavor_toggle()" class="dropbtn">Add Flavor</button>
-      <div id="flavor_dropdown" class="dropdown-content"></div>
+      <!-- <div id="flavor_dropdown" class="dropdown-content"></div> -->
     </div>
 
 
@@ -250,7 +250,7 @@ permalink: /demo
       var output_id = "output_";
       output_id = output_id.concat(supplement.name);
       output.id = output_id;
-      output.innerHTML = '<span>Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount: <span style="font-weight:bold;color:red"> 0 </span>' + supplement.unit + ' per serving</span>';
       // output.display = inline;
       output.className = "output";
 
@@ -259,21 +259,21 @@ permalink: /demo
       plus_input.class = "plus_minus_delete";
       plus_input.id = plus;
       plus_input.value = "+";
-      plus_input.style="position:relative; left:55%";
+      plus_input.style="position:static; float:right";
 
       var minus_input = document.createElement("input");
       minus_input.type = "button";
       minus_input.class = "plus_minus_delete";
       minus_input.id = minus;
       minus_input.value = "-";
-      minus_input.style="position:relative; left:55%";
+      minus_input.style="position:static; float:right";
 
       var delete_input = document.createElement("input");
       delete_input.type = "button";
       delete_input.class = "plus_minus_delete";
       delete_input.id = delete_id;
       delete_input.value = "∅";
-      delete_input.style="position:relative; left:55%";
+      delete_input.style="position:static; float:right";
       
       minus_input.addEventListener('click', event => {
         event.preventDefault();
@@ -340,6 +340,22 @@ permalink: /demo
     }
   }
 
+  function add_supplement_label(supplement) {
+    var table = document.getElementById("nutrition_table");
+    var row = table.insertRow(index+1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
+    cell1.id = supplement.name;
+    var cell2_id = "space_";
+    cell2_id = cell2_id.concat(supplement.name);
+    cell2.id = cell2_id;
+    var cell3_id = "dv_";
+    cell3_id = cell3_id.concat(supplement.name);
+    cell3.id = cell3_id;
+  }
+
   function error_balloon() {
     var popup = document.getElementById("errorPopup_01");
     popup.classList.toggle("show");
@@ -353,7 +369,7 @@ permalink: /demo
     var input, filter, ul, li, a, i;
     input = document.getElementById("search_input");
     filter = input.value.toUpperCase();
-    div = document.getElementById("supplement_dropdown");
+    div = document.getElementById("selection_space");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
       txtValue = a[i].textContent || a[i].innerText;
@@ -376,31 +392,15 @@ permalink: /demo
     serving_size.innerHTML ='<h6>Serving Size: 1 scoop (' + parseFloat(serving_size_amt).toFixed(1) + ' g)</h6>';
   }
 
-  function add_supplement_label(supplement) {
-    var table = document.getElementById("nutrition_table");
-    var row = table.insertRow(index+1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + supplement.qty + ' ' + supplement.unit;
-    cell1.id = supplement.name;
-    var cell2_id = "space_";
-    cell2_id = cell2_id.concat(supplement.name);
-    cell2.id = cell2_id;
-    var cell3_id = "dv_";
-    cell3_id = cell3_id.concat(supplement.name);
-    cell3.id = cell3_id;
-  }
-
   function update_amt(supplement, output) {
     var cell1 = document.getElementById(supplement.name);
 
     if (supplement.unit == "mg"){
-      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty*1000).toFixed(0)  + '</span> ' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty*1000).toFixed(0)  + '</span> ' + supplement.unit + ' per serving</span>';
       cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty*1000).toFixed(0) + ' ' + supplement.unit;
     }
     else{
-      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(1)  + '</span> ' + supplement.unit + '</span>';
+      output.innerHTML = '<span>Amount:' + '<span style="font-weight:bold;color:red"> ' + parseFloat(supplement.qty).toFixed(1)  + '</span> ' + supplement.unit + ' per serving</span>';
       cell1.innerHTML = '<span style="font-weight:bold">' + supplement.propername + ': </span>' + parseFloat(supplement.qty).toFixed(1) + ' ' + supplement.unit;
     }
     
