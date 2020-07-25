@@ -336,29 +336,68 @@ li a {
 .slidecontainer {
   width: 50%;
 }
-.slider {
-  -webkit-appearance: none;
+.supplement_slider {
+  /* -webkit-appearance: none;
   width: 100%;
   height: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
   background: #d3d3d3;
+  border: 1px;
+  border-color: #CC4125;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
-  transition: opacity .2s;
+  transition: opacity .2s; */
+  grid-area: supplement_slider;
 }
-.slider:hover {
-  opacity: 1;
+.supplement_slider:hover {
+  /* opacity: 1; */
 }
-.slider::-moz-range-thumb {
-  width: 25px;
+.supplement_slider::-moz-range-thumb {
+  /* width: 25px;
   height: 25px;
-  border-radius: 100%;
+  border-radius: 100%; */
 }
+.supplement {
+  display: grid;
+  max-height: 90px;
+  grid-template-columns: 1fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "supplement_propername supplement_propername supplement_propername supplement_propername supplement_propername" 
+                       "supplement_slider supplement_slider supplement_slider supplement_slider supplement_slider"
+                       "supplement_output supplement_space supplement_minus supplement_delete supplement_plus";
+  /* grid-template-areas: "supplement_propername supplement_propername supplement_propername supplement_propername supplement_propername" "supplement_slider supplement_slider supplement_slider supplement_slider supplement_slider" "supplement_output supplement_space supplement_minus supplement_delete supplement_plus"; */
+}
+
+.supplement_propername {
+  grid-area: supplement_propername;
+  color: #e8e8e8;
+  font-size: large;
+}
+.supplement_output {
+  grid-area: supplement_output;
+  color: #E8E8E8;
+}
+.supplement_minus {
+  grid-area: supplement_minus;
+  position:static; 
+  float:right;
+}
+.supplement_delete {
+  grid-area: supplement_delete;
+  position:static; 
+  float:right;
+}
+.supplement_plus {
+  grid-area: supplement_plus;
+  position:static; 
+  float:right;
+}
+
 .supplements {
   color: #000;
   grid-area: supplements;
-  width: 50%;
+  width: 67%;
 }
 .supplements h5{
   color: #e8e8e8;
