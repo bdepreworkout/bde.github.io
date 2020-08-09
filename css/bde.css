@@ -304,7 +304,7 @@ li a {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1.5fr 1fr;
   grid-template-rows: 15% 2.5fr;
-  gap: 1px 1px;
+  /* gap: 10px 10px; */
   grid-template-areas: "nutrition_label buttons buttons information" "nutrition_label dropdown supplements information";
 }
 
@@ -367,6 +367,8 @@ li a {
                        "supplement_slider supplement_slider supplement_slider supplement_slider supplement_slider"
                        "supplement_output supplement_space supplement_minus supplement_delete supplement_plus";
   /* grid-template-areas: "supplement_propername supplement_propername supplement_propername supplement_propername supplement_propername" "supplement_slider supplement_slider supplement_slider supplement_slider supplement_slider" "supplement_output supplement_space supplement_minus supplement_delete supplement_plus"; */
+  /* gap: 10px 10px; */
+  margin-bottom: 10px;
 }
 
 .supplement_propername {
@@ -399,7 +401,7 @@ li a {
   grid-area: supplements;
   width: 67%;
 }
-.supplements h5{
+.supplement h5{
   color: #e8e8e8;
   font-size: large;
 }

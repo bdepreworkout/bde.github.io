@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "BDE"
-  spec.version       = "0.1.0"
+  spec.version       = "0.0.1"
   spec.authors       = ["alexanderhay"]
   spec.email         = ["info@bdepreworkout.com"]
 
-  spec.summary       = %q{A port of ThemeFisher's Airspace theme. https://github.com/themefisher/airspace-free-html5-agency-template}
+  spec.summary       = "Custom made for BDE Preworkout"
   spec.homepage      = "http://example.com"
   spec.license       = "MIT"
 
@@ -15,4 +15,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "jekyll", "~> 3.8.5"
   spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "rake", "~> 12.3.1"
+  # spec.add_development_dependence "papaparse", "~> 5.2.0"
 end

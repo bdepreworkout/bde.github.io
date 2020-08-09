@@ -11,8 +11,6 @@ $(document).ready(function(){
 	});
 
 
-
-
 	$("#clients-logo").owlCarousel({
 		autoPlay: 3000,
 		items : 5,
@@ -42,5 +40,27 @@ $(document).ready(function(){
 	$('.counter').counterUp({
         delay: 10,
         time: 1000
-    });
+	});
+	
+
+
+	// $('#files').parse({
+	// 	config: {
+	// 		delimiter: "",
+	// 		complete: displayHTMLTable,
+	// 	},
+	// 	before: function(file, inputElem)
+	// 	{
+	// 		//console.log("Parsing file...", file);
+	// 	},
+	// 	error: function(err, file)
+	// 	{
+	// 		//console.log("ERROR:", err, file);
+	// 	},
+	// 	complete: function()
+	// 	{
+	// 		//console.log("Done with all files");
+	// 	}
+	// });
+
 });
