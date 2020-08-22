@@ -1,0 +1,19 @@
+id,name,type,propername,variant,unit,fat,sodium,protein,carbs,max,step,dv,qty,ingredients
+1,bcaa,supplement,BCAA,,g,0,0,0,0,20,0.1,N/A,0,
+2,betaalanine,supplement,Beta Alanine,,g,0,0,0,0,5,0.1,1.2,0,
+3,caffeine,supplement,Caffeine,,mg,0,0,0,0,0.3,0.001,0.2,0,Caffeine Anhydrous
+4,creatine,supplement,Creatine,,g,0,0,0,0,5,0.1,N/A,0,
+5,larganine,supplement,L-Arganine,,g,0,0,0,0,2,0.1,N/A,0,
+6,lcitrulline,supplement,L-Citrulline,,g,0,0,0,0,5,0.1,N/A,0,
+7,niacin,supplement,Niacin,,mg,0,0,0,0,0.5,0.001,0.2,0,
+8,taurine,supplement,Taurine,,mg,0,0,0,0,0.8,0.001,N/A,0,
+9,theanine,supplement,Theanine,,mg,0,0,0,0,0.5,0.001,N/A,0,
+10,macaroot,nootropic,Maca Root,,,,,,,,,,,
+11,zma,nootropic,ZMA,,,,,,,,,,,
+12,ginkgo,nootropic,Ginkgo,,,,,,,,,,,
+13,dhea,nootropic,T-Boost (DHEA),,,,,,,,,,,
+14,yohimbe,nootropic,Yohimbe,,,,,,,,,,,
+15,fruitpunch,flavor,Fruit Punch,,g,0,0,0,1,2,0.1,N/A,0,"Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Sucralose, Malic Acid, Silica, FD&C Red Lake #40"
+16,grape,flavor,Grape,,g,0,0,0,1,2,0.1,N/A,0,"Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Malic Acid, Sucralose, Silica, FD&C Red Lake #40, FD&C Blue Lake #1"
+17,limeade,flavor,Limeade,,g,0,0,0,1,2,0.1,N/A,0,"Flavor Mix (Natural & Artificial Flavor, Citric Acid, Sucralose, Maltodextrin, Malic Acid, Silica, FD&C Yellow Lake #5, FD&C Blue Lake #1"
+18,watermelon,flavor,Watermelon,,g,0,0,0,1,2,0.1,N/A,0,"Flavor Mix (Maltodextrin, Natural & Artificial Flavor, Citric Acid, Sucralose, Malic Acid, Silica, FD&C Red Lake #40"
