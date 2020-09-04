@@ -1,46 +1,12 @@
-<style>
-  ul#menu li {
-    display:inline;
-  }
-</style>
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      <!-- header Nav Start -->
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="{{ site.baseurl }}/">
-                <img src="{{ site.baseurl }}/img/logo_sm.png" alt="Logo">
-              </a>
-            </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <a class="navbar" href="{{ site.baseurl }}/">
-                <!-- <img src="{{ site.baseurl }}/img/banner.png" alt="Banner" height="50" style="vertical-align: middle"> -->
-                <h1 class="animated fadeIn">BDE PREWORKOUT</h1>
-              </a>
-            </div>
-            <div class="navbar-menu">
-              <ul id="menu">
-                <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
-                <li><a href="{{ site.baseurl }}/about">About</a></li>
-                <li><a href="{{ site.baseurl }}/demo">Demo</a></li>
-                <li><a href="{{ site.baseurl }}/">Home</a></li>
-              </ul>
-            </div>
-          </div><!-- /.container-fluid -->
-        </nav>
-      </div>
-    </div>
+<header class="{% if page.url == '/' %}bg-primary{% else %}bg-image{% endif %} text-white" {% if page.url != '/' %}style="background-image: url({{page.image}})"{% endif %}>
+  <div class="container text-center">
+    {% if page.url == '/' %}
+    <img class="img-fluid header-image" src="{{site.data.main.main-image}}" alt="{{site.data.main.title}}">
+    <h1>{{site.data.main.description}}</h1>
+    <p class="lead">{{site.data.main.about}}</p>
+    {% else %}
+    <h1 class="display-2">{{page.title}}</h1>
+    <p class="lead">{{page.description}}</p>
+    {% endif %}
   </div>
 </header>
-

@@ -1,0 +1,45 @@
+/* Add your custom styles here */
+
+.supplement_slider {
+    width: 100%
+}
+
+.button-container {
+    float: right
+}
+
+.popup {
+    position: relative;
+    /* display: inline-block; */
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .popup .popuptext {
+    /* The actual popup */
+  
+    visibility: hidden;
+    width: 160px;
+    background-color: #fff;
+    border-style: solid;
+    border-color: red;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  .popup .show {
+    /* Toggle this class - hide and show the popup */
+    visibility: visible;
+  }
+
+  .supplement_propername {
+      margin-top: 15px;
+  }

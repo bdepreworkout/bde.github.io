@@ -1,0 +1,97 @@
+###################################################
+# Dragon Fruit Theme by https://jekyll-themes.com #
+# For support, send an email to hello@webjeda.com #
+# All the changes made in _config.yml applies     #
+# after a restart or rebuild of the site          #
+###################################################
+
+# title: BDE PREWORKOUT
+description:  BDE PREWORKOUT
+about: Build the ultimate preworkout mix
+about-footer: BDE Preworkout values education as a tool to happier and healthier lives.
+# main-image: /assets/images/dragonfruit-ecommerce-jekyll-theme.png
+url: https://bdepreworkout.com
+
+# Logo can be adjusted by setting a proper height. If not, please check _includes/nav.html file for manual editing.
+logo: /assets/images/logo.png
+logo-height: 50
+
+# Social media links
+# facebook: https://facebook.com
+# twitter: https://twitter.com
+# instagram: https://instagram.com
+# email: hello@email.com
+
+menu:
+  - title: Home
+    link: '#page-top'
+    page: /
+
+  - title: Demo
+    link: '/demo'
+    page: /demo/
+
+  # - title: About
+  #   link: '#about'
+  #   page: /about/
+
+  # - title: Supplements
+  #   link: '#features'
+  #   page: '/#features'
+
+  # - title: Contact
+  #   link: '#contact'
+  #   page: '/#contact'
+
+
+
+
+
+
+# Footer
+# For complete customization, go to _includes/footer.html
+
+quick-links:
+  - title: Home
+    link: /
+
+  - title: Products
+    link: /products/
+
+  - title: Documentation
+    link: 'https://docs.jekyll-themes.com/docs/dragon-fruit/'
+
+  - title: Contact
+    link: 'mailto:support@bdepreworkout.com'
+
+
+payment-footer:
+  title: Payment
+  # description: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  icons: true
+  support-button:
+    link: support@bdepreworkout.com
+  documentation-button:
+    # link: https://docs.jekyll-themes.com/docs/dragon-fruit/   // uncomment to show documentation link
+
+copyright: 'Designed for BDE Preworkout LLC | Powered by <a href="https://snipcart.com/" target="_blank">Snipcart</a>'
+
+
+# Analytics
+analytics: UA-92266803-4
+
+# This applies to all products
+currency: '$'
+cart-popup: true #set it to false if you do not want to see the popup showing added product in the cart
+floating-cart: true # shows number of items in the cart in a floating button in phones
+
+
+# Sign up with SnipCart and go to https://app.snipcart.com/dashboard/account/credentials to find your API
+snipcart-api: OGI1NGJiZDktMDM5Ny00MWM0LTg0ZTYtNDQ5M2FmMzQ3MzJhNjM2OTU5MjcxOTA3NDM5MjE3
+
+# Crisp Chat website ID - Signup => https://app.crisp.chat/settings/website/ => Settings => Setup instruction => Copy website ID
+# crisp-chat-website-id: b8652974-7163-4c3a-a8aa-7ae46da8d460
+
+
+# Remove the lines below
+# buy-link: https://rzp.io/l/dragon-fruit

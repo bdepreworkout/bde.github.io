@@ -1,36 +1,29 @@
+title: Dragon Fruit
+description: A simple e-commerce Jekyll theme for simple products.
+
+sass:
+  sass_dir: /assets/css/_sass
+  style: compressed
+
+
+include:
+  - _pages
 
 exclude:
-  - "/vendor/"
-  - "Gemfile"
-  - "Gemfile.lock"
-  - "README.md"
-  - "LICENSE.md"
-  - "*.gemspec"
+  - .sass-cache
 
-keep_files:
-  - "CNAME"
-  - ".git"
-  - ".gitignore"
+#compress.html
+compress_html:
+  clippings: [html, head, meta, title, link, body, div, script, header, footer]
+  comments: ["<!-- ", " -->"]
+  endings: [all]
+  ignore:
+    envs: [local]
+  blanklines: false
+  profile: false
+  startings: []
 
-# Site settings
-name: BDE Preworkout
-email: info@bdepreworkout.com
-url: "bdepreworkout.com" # the base hostname & protocol for your site
-baseurl: ""
-cover: "/assets/cover.png"
-logo: "/assets/logo.png"
-# last_updated: Jul, 2020
 
-# Build settings
-markdown: kramdown
 
-# Google analytics
-# ga_tracking_id: "UA-XXXX-1"
-
-# Category descriptions (for archive pages)
-descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
-
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+plugins:
+  - jekyll-seo-tag
