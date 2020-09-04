@@ -186,6 +186,11 @@
   overflow: scroll;
 }
 
+.modal-info-icon{
+  padding-top: 6px;
+  padding-left: 6px;
+}
+
 // Scale up the modal
 @include media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports

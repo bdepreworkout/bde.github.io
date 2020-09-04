@@ -8,8 +8,7 @@ layout: compress
 <body id="page-top">
   {% include loader.html %}
   {% include nav.html %}
-  {% include header.html %}
-
+ 
   {{content}}
 
   {% include footer.html %}
@@ -19,13 +18,13 @@ layout: compress
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
   <script
-      src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
+      src="https://cdn.snipcart.com/themes/v3.0.20/default/snipcart.js"
       data-api-key="{{site.data.main.snipcart-api}}"
       id="snipcart"
       data-autopop="{{site.data.main.cart-popup}}">
   </script>
 
-  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.snipcart.com/themes/v3.0.20/default/snipcart.css" rel="stylesheet" type="text/css" />
 
 
   <!-- Bootstrap core JavaScript -->
@@ -68,11 +67,6 @@ layout: compress
   		document.getElementsByTagName('head')[0].appendChild(css);
   	})();
   </script>
-
-  <!-- Crisp chat script -->
-  {% include chat.html %}
-
-
 
 </body>
 

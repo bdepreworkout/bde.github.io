@@ -60,12 +60,12 @@ img {
 
 
 // Change navbar bg color on scroll
-.navbar {
-  background-color: rgba(0, 0, 0, 0.1) !important;
-}
-.navbar-darker-bg {
-  background-color: rgba(0, 0, 0, 0.3) !important;
-}
+// .navbar {
+//   // background-color: rgba(0, 0, 0, 0.1) !important;
+// }
+// .navbar-darker-bg {
+//   background-color: rgba(0, 0, 0, 0.3) !important;
+// }
 
 
 .navbar-scroll-change.scrolled {
@@ -247,7 +247,11 @@ img {
 
 //footer
 footer {
-  color: #eee;
+  color: #E8E8E8;
+  background-color: #2E2E2E;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 
   a {
     color: #eee;

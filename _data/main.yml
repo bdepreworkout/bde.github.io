@@ -5,39 +5,45 @@
 # after a restart or rebuild of the site          #
 ###################################################
 
-title: Dragon Fruit
-description: E-commerce made easy
-about: A simple e-commerce Jekyll theme for simple products.
-about-footer: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.
-main-image: /assets/images/dragonfruit-ecommerce-jekyll-theme.png
-url: https://dragonfruit.jekyll-themes.com
+# title: BDE PREWORKOUT
+description:  BDE PREWORKOUT
+about: Build the ultimate preworkout mix
+about-footer: BDE Preworkout values education as a tool to happier and healthier lives.
+# main-image: /assets/images/dragonfruit-ecommerce-jekyll-theme.png
+url: https://bdepreworkout.com
 
 # Logo can be adjusted by setting a proper height. If not, please check _includes/nav.html file for manual editing.
-logo: /assets/images/dragon-fruit.svg
-logo-height: 25
+logo: /assets/images/logo.png
+logo-height: 50
 
 # Social media links
-facebook: https://facebook.com
-twitter: https://twitter.com
-instagram: https://instagram.com
-email: hello@email.com
+# facebook: https://facebook.com
+# twitter: https://twitter.com
+# instagram: https://instagram.com
+# email: hello@email.com
 
 menu:
   - title: Home
     link: '#page-top'
     page: /
 
-  - title: Products
-    link: '#products'
-    page: /products/
+  - title: Demo
+    link: '/demo'
+    page: /demo/
 
-  - title: Features
-    link: '#features'
-    page: '/#features'
+  # - title: About
+  #   link: '#about'
+  #   page: /about/
 
-  - title: Contact
-    link: '#contact'
-    page: '/#contact'
+  # - title: Supplements
+  #   link: '#features'
+  #   page: '/#features'
+
+  # - title: Contact
+  #   link: '#contact'
+  #   page: '/#contact'
+
+
 
 
 
@@ -56,19 +62,19 @@ quick-links:
     link: 'https://docs.jekyll-themes.com/docs/dragon-fruit/'
 
   - title: Contact
-    link: 'mailto:hello@ekyll-themes.com'
+    link: 'mailto:support@bdepreworkout.com'
 
 
 payment-footer:
   title: Payment
-  description: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  # description: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   icons: true
   support-button:
-    link: hello@webjeda.com
+    link: support@bdepreworkout.com
   documentation-button:
-    link: https://docs.jekyll-themes.com/docs/dragon-fruit/
+    # link: https://docs.jekyll-themes.com/docs/dragon-fruit/   // uncomment to show documentation link
 
-copyright: ' | Powered by <a href="https://snipcart.com/" target="_blank">Snipcart</a>'
+copyright: 'Designed for BDE Preworkout LLC | Powered by <a href="https://snipcart.com/" target="_blank">Snipcart</a>'
 
 
 # Analytics
@@ -84,8 +90,8 @@ floating-cart: true # shows number of items in the cart in a floating button in 
 snipcart-api: OGI1NGJiZDktMDM5Ny00MWM0LTg0ZTYtNDQ5M2FmMzQ3MzJhNjM2OTU5MjcxOTA3NDM5MjE3
 
 # Crisp Chat website ID - Signup => https://app.crisp.chat/settings/website/ => Settings => Setup instruction => Copy website ID
-crisp-chat-website-id: b8652974-7163-4c3a-a8aa-7ae46da8d460
+# crisp-chat-website-id: b8652974-7163-4c3a-a8aa-7ae46da8d460
 
 
 # Remove the lines below
-buy-link: https://rzp.io/l/dragon-fruit
+# buy-link: https://rzp.io/l/dragon-fruit
