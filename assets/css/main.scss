@@ -1,20 +1,11 @@
 ---
 ---
-/*
- Color Palette
-  Background:     494949
-  Button:         CC4125
-  Button shade:   AA4125
-  Header/Footer:  2E2E2E
-  Text 1:         E8E8E8
-  Text 2:         919191
- */
 @charset "utf-8";
 
 
-$brand-color: #494949 !default;
-$font-family: 'Roboto', sans-serif;
-$header-family: 'Roboto', sans-serif;
+$brand-color: #CF5061 !default;
+$font-family: 'Muli', sans-serif;
+$header-family: 'Muli', sans-serif;
 $enable-gradients: true;
 $enable-shadows: true;
 
@@ -108,9 +99,9 @@ html {
 @import "bootstrap/spinners";
 @import "bootstrap/utilities";
 @import "bootstrap/print";
-// @import "animate";
 @import
+
+
     "scrolling-nav",
     "style",
-    "custom",
-    "animate";
+    "custom";

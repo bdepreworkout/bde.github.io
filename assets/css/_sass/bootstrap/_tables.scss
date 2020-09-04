@@ -23,15 +23,8 @@
   tbody + tbody {
     border-top: (2 * $table-border-width) solid $table-border-color;
   }
-
 }
 
-.nutrition-facts__table{
-  tr {
-    border-width: 1px;
-    border-style: solid;
-  }
-}
 
 //
 // Condensed table w/ half padding
@@ -44,9 +37,6 @@
   }
 }
 
-.dv {
-  float: right;
-}
 
 // Border versions
 //
