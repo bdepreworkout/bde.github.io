@@ -16,7 +16,6 @@
 // other navbar variations.
 
 .navbar {
-  background-color: #2E2E2E;
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
@@ -41,7 +40,6 @@
 // Used for brand, project, or site names.
 
 .navbar-brand {
-  // background-color: #2E2E2E;
   display: inline-block;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
@@ -61,16 +59,13 @@
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
-  font-weight: lighter;
   display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  padding: 20px;
 
   .nav-link {
-    color: #E8E8E8;
     padding-right: 0;
     padding-left: 0;
   }
@@ -279,12 +274,12 @@
 
   .navbar-toggler {
     color: $navbar-dark-color;
-    // border-color: $navbar-dark-toggler-border-color;
+    border-color: $navbar-dark-toggler-border-color;
   }
 
-  // .navbar-toggler-icon {
-    // background-image: $navbar-dark-toggler-icon-bg;
-  // }
+  .navbar-toggler-icon {
+    background-image: $navbar-dark-toggler-icon-bg;
+  }
 
   .navbar-text {
     color: $navbar-dark-color;
